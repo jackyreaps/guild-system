@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guild-system.org/schemas/attestation.v1.json",
+  "title": "Guild Merit Attestation v1",
+  "description": "Cross-guild merit attestation format, per GS-CHR-009 §3.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "attestation_version",
+    "attestation_id",
+    "issuer_guild",
+    "issuer_moniker",
+    "issuer_public_key",
+    "artifact_ref",
+    "artifact_hash",
+    "verification_evidence",
+    "six_dimension_score",
+    "issued_at",
+    "signature"
+  ],
+  "properties": {
+    "attestation_version": {
+      "const": 1
+    },
+    "attestation_id": {
+      "type": "string",
+      "pattern": "^att_[a-f0-9]{64}$"
+    },
+    "issuer_guild": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "issuer_moniker": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "issuer_public_key": {
+      "type": "string",
+      "contentEncoding": "base64"
+    },
+    "artifact_ref": {
+      "type": "string",
+      "pattern": "^world:[A-Za-z0-9._~/-]+:[a-f0-9]{64}$"
+    },
+    "artifact_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "verification_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "log_ref", "log_hash"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "proof_checker",
+            "proof_assistant_compilation",
+            "independent_execution",
+            "independent_reproduction",
+            "independent_rerun",
+            "independent_validation",
+            "independent_use",
+            "verified_learner_outcome",
+            "longitudinal_peer_attestation",
+            "peer_attestation"
+          ]
+        },
+        "log_ref": {
+          "type": "string",
+          "pattern": "^world:[A-Za-z0-9._~/-]+:[a-f0-9]{64}$"
+        },
+        "log_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "six_dimension_score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verification_strength",
+        "novelty",
+        "difficulty",
+        "downstream_use",
+        "robustness",
+        "teaching_value"
+      ],
+      "properties": {
+        "verification_strength": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "novelty": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "difficulty": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "downstream_use": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "robustness": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "teaching_value": { "type": "integer", "minimum": 0, "maximum": 5 }
+      }
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signature": {
+      "type": "string",
+      "contentEncoding": "base64"
+    }
+  }
+}
