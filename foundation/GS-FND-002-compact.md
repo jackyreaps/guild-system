@@ -3,42 +3,32 @@ doc: GS-FND-002
 title: The Compact of the Guild System
 status: draft
 category: foundation
-authority: Assembly of Charters
 binds: true
 supersedes: all prior Compact drafts
 review_cycle: biennial
-emergency_review: on material change
 ---
 
 # GS-FND-002 — The Compact of the Guild System
-
-**The founding document. Binds every other GS-* document.**
-
----
 
 ## 1. Purpose
 
 This Compact establishes the minimum standards every chartered guild must meet, the eight foundational rules that govern the system's operation and structure, the authority under which the system acts, and the relationship between this document and every other document in the Guild System inventory.
 
-Every other GS-* document derives its authority from this Compact. No document may contradict it. Where a contradiction exists, this Compact governs and the contradicting document is amended.
-
----
+Every other GS-* document derives its authority from this Compact. Where a contradiction exists, this Compact governs and the contradicting document is amended.
 
 ## 2. What the Guild System Is
 
-The Guild System is a polycentric network of autonomous guilds — each with its own culture, currency, and internal governance — interoperating through a shared protocol for merit recognition, contribution verification, and idea protection.
+A polycentric network of autonomous guilds — each with its own culture, currency, and internal governance — interoperating through a shared protocol for merit recognition, contribution verification, and idea protection.
 
-It is not a single organization. It has no headquarters, no central board, no legal personality at the system level. It is a meta-structure: a minimal shared layer over many sovereign local guilds.
+No headquarters. No central board. No legal personality at the system level. A meta-structure: a minimal shared layer over many sovereign local guilds.
 
 Its purpose is to provide a lawful, merit-based alternative to institutional narrative control — a place where formalists and builders can work together on problems that matter, with their contributions recognized by peers and protected by structure.
 
-**Runtime:** The Guild System's runtime is Resileos-QAI (`RS-INF-001`, `RS-INF-002`, `RS-INF-003`). Framework foundation: QD-TER-Human-Medium. Policy: this repository.
-
----
+**Runtime:** Resileos-QAI (`RS-INF-001`, `RS-INF-002`, `RS-INF-003`). Framework: QD-TER-Human-Medium. Policy: this repository.
 
 ## 3. Core Definitions
 
-- **The Compact.** This document. The shared protocol layer. It holds no assets, signs no contracts, employs no one, has no legal personality, and cannot be served.
+- **The Compact.** This document. Holds no assets, signs no contracts, employs no one, has no legal personality, cannot be served.
 - **Chartered Guild.** An autonomous legal entity that has adopted this Compact, filed a Local Guild Charter (GS-CHR-010), and been attested by peer guilds.
 - **Circle.** A working group within a guild — formalist, empirical, forge, or distribution.
 - **Forge Circle.** A temporary, mission-specific circle formed when formalist and empirical members overlap.
@@ -48,36 +38,29 @@ Its purpose is to provide a lawful, merit-based alternative to institutional nar
 - **Credits.** A variable internal accounting unit used to access shared compute, tools, material resources, and educational services. Burn-on-use. Cannot be converted to Merit. Stored in the Credits Ledger (`RS-INF-002` §3.2).
 - **Reserve.** Any asset held by a guild for operational continuity.
 - **Guild Work.** Public or authorized contribution produced under a guild charter.
-- **Hostile State.** A state actor using unlawful, predatory, or extrajudicial means to suppress lawful public-interest work.
-- **Legitimate Legal Demand.** A request following established law, due process, and human-rights standards.
-- **Predatory Request.** A demand lacking due process, proportionality, or human-rights compliance.
-
----
+- **Hostile State.** A state actor using unlawful, predatory, or extrajudicial means to suppress lawful public-interest work. See GS-CHR-001 §3.2 for the expanded definition covering law-as-weapon.
+- **Legitimate Legal Demand.** A request satisfying the Legitimacy Test (GS-CHR-006 §6): lawful basis, due process, proportionality, jurisdiction, human-rights compliance, targeting of lawful work, absence of pretext. A demand can be lawful under local statute and still fail the test if the law itself is predatory.
+- **Predatory Request.** A demand failing any criterion of the Legitimacy Test.
 
 ## 4. The Four Operating Articles
-
-The Operating Articles govern the system's economic and data mechanics. They bind every chartered guild.
 
 ### Article I — Public or Authorized Data Separation
 
 The Guild System works only with public or explicitly authorized data. No guild, circle, or member may use covert data acquisition, unauthorized access, proprietary telemetry without consent, or trade secrets as the basis of any Guild artifact.
 
-Public data, open weights, voluntarily disclosed whistleblower material through lawful channels, and authorized audit telemetry are permitted. Everything else is prohibited. This is both ethical commitment and legal armor.
+Public data, open weights, voluntarily disclosed whistleblower material through lawful channels, and authorized audit telemetry are permitted. Everything else is prohibited.
 
-**Runtime:** Resileos enforces this at the namespace layer (`RS-INF-001` §3). Unprefixed global subjects must be public or authorized.
+**Runtime:** Resileos enforces this at the namespace layer (`RS-INF-001` §3).
 
 ### Article II — Non-Convertible System Credits
 
-Guild Credits are internal accounting units. They cannot be exchanged for fiat, cryptocurrency, or any external store of value. They are earned by contribution and burned on consumption of internal goods.
+Guild Credits are internal accounting units. They cannot be exchanged for fiat, cryptocurrency, or any external store of value. Earned by contribution, burned on consumption of internal goods.
 
-The convertibility cap is a feature:
-- Avoids tax and regulatory exposure in most jurisdictions.
-- Ensures credits can only be spent on capability-building.
-- Prevents credits from becoming speculative or capturable.
+The convertibility cap avoids tax and regulatory exposure, ensures credits can only build capability, and prevents credits from becoming speculative or capturable.
 
-Any guild wishing to operate a semi-closed or convertible instrument must file a compliance annex (GS-CHR-003) and obtain local counsel sign-off. The Compact's default is closed-loop.
+Any guild wishing to operate a semi-closed or convertible instrument must file a compliance annex (GS-CHR-003) and obtain local counsel sign-off. The default is closed-loop.
 
-**Runtime:** `RS-INF-002` §7.2 prohibits `/convert`, `/redeem`, and `/transfer` endpoints. Their absence is structural, not configurable.
+**Runtime:** `RS-INF-002` §7.2 prohibits `/convert`, `/redeem`, and `/transfer` endpoints. Their absence is structural.
 
 ### Article III — The Tax-Integrity Floor
 
@@ -87,9 +70,9 @@ Guild Credits route *surplus contribution* toward public-good functions (Article
 
 ### Article IV — Civic Substitution over Capital Accumulation
 
-The Guild System exists to provide where provision is absent, not to accumulate where accumulation is easy. Where public goods are unfunded, corrupted, or denied, voluntary mutual institutions may provide them in parallel.
+The Guild System exists to provide where provision is absent. Where public goods are unfunded, corrupted, or denied, voluntary mutual institutions may provide them in parallel.
 
-The Compact sets the floor every guild must recognize:
+The floor every guild must recognize:
 - Education and literacy
 - Health and mental health support
 - Local infrastructure and logistics
@@ -100,25 +83,23 @@ The Compact sets the floor every guild must recognize:
 
 Guilds may expand this list. They may not subtract.
 
----
-
 ## 5. The Four Structural Principles
 
 ### Principle I — Exemption through Provision
 
-No guild may seek exemption from lawful local obligations. No guild may represent itself as too important to comply. Civic provision is the substitute for privilege, never a claim to it.
+No guild may seek exemption from lawful local obligations. Civic provision is the substitute for privilege, never a claim to it.
 
 ### Principle II — Velocity of Flow over Hoarding
 
 No guild may accumulate convertible assets beyond what its mission and contingency pool require. Reserves circulate. Credits are spent. Concentration rules apply: no guild may hold more than one-third of reserves in a single institution, and no single counterparty may represent more than a defined share of income.
 
-**Cross-reference:** `GS-OPS-005` §8 (anti-concentration), `GS-OPS-006` §4 (distribution requirements).
+**Cross-reference:** `GS-OPS-005` §8, `GS-OPS-006` §4.
 
 ### Principle III — Polycentricity over Patronage
 
 No guild may depend on a single funder, university, lab, state, legal form, or jurisdiction. Distribution requirements apply: assets in two or more jurisdictions, records in two or more, legal personality in a rule-of-law jurisdiction, membership distributed.
 
-**Cross-reference:** `GS-OPS-005` §7 (jurisdictional distribution), `GS-OPS-006` §4 (distribution requirements).
+**Cross-reference:** `GS-OPS-005` §7, `GS-OPS-006` §4.
 
 ### Principle IV — Verifiability over Secrecy
 
@@ -126,11 +107,9 @@ No guild may be operationally opaque. Members may be pseudonymous; the guild's m
 
 **Runtime:** `RS-INF-001` §3.2 names this as the reason for the namespaced subject scheme. `RS-INF-003` operationalizes it via the frame profile's claim labels.
 
----
-
 ## 6. Minimum Standards
 
-Every chartered guild must meet all of the following. A guild that fails any is not recognized by peers and cannot participate in the merit and interoperability layer.
+Every chartered guild must meet all of the following:
 
 1. **Adopt the Compact.** File a signed declaration of adoption.
 2. **File a Local Guild Charter** (GS-CHR-010) declaring legal form, jurisdictions, funding sources, jurisdiction spread, fork readiness, founding orientation, and shear detection method.
@@ -141,15 +120,13 @@ Every chartered guild must meet all of the following. A guild that fails any is 
 7. **Submit to peer attestation.** Every guild attests to peer guilds annually, and is attested by them.
 8. **Comply with the disclosure boundary.** If a lawful authority asks who ultimately benefits from any structure, the answer is available (GS-OPS-005 §6).
 
-**Runtime:** Resileos will not host a guild that has not filed a GS-CHR-010 (`RS-INF-001` §2.1).
-
----
+**Runtime:** Resileos will not host a guild without a filed GS-CHR-010 (`RS-INF-001` §2.1).
 
 ## 7. The Authority Article
 
 ### 7.1 No Central Authority
 
-There is no central authority in the Guild System. The Compact grants no executive, legislative, or judicial power to any body.
+No executive, legislative, or judicial power is granted to any body at the system level.
 
 ### 7.2 Authority Is Granted, Not Assumed
 
@@ -173,9 +150,7 @@ Every body exercising granted authority is subject to after-action review by pee
 
 ### 7.7 Command Contribution
 
-Leading under threat — maintaining parallel transport under stress — is a recognized contribution under GS-CHR-002. Members who exercise granted authority well are recorded in the Merit Ledger. Members who abuse it are subject to the Drift Remedy Ladder (GS-CHR-005 §6).
-
----
+Leading under threat — maintaining parallel transport under stress — is a recognized contribution under GS-CHR-002 §5. Members who exercise granted authority well are recorded in the Merit Ledger. Members who abuse it are subject to the Drift Remedy Ladder (GS-CHR-005 §4).
 
 ## 8. Document Relationship
 
@@ -185,9 +160,7 @@ Leading under threat — maintaining parallel transport under stress — is a re
 - **MTX (Matrices) illustrates.** Matrices inform; they do not bind.
 - **REF (Reference) informs.** Reference documents provide context.
 
-Where documents conflict: FND > CHR > OPS > MTX > REF. The Compact governs.
-
----
+Where documents conflict: FND > CHR > OPS > MTX > REF.
 
 ## 9. Peer Attestation
 
@@ -199,17 +172,13 @@ Every chartered guild is attested annually by at least two peer guilds not under
 - Publication and disclosure status
 - Concentration and distribution status
 
-Attestation is signed, public, and subject to appeal. Failure to obtain attestation triggers the Drift Remedy Ladder (GS-CHR-005 §6).
+Attestation is signed, public, and subject to appeal. Failure to obtain attestation triggers the Drift Remedy Ladder (GS-CHR-005 §4).
 
 **Runtime:** Resileos stores attestations but does not perform them (`RS-INF-001` §5).
-
----
 
 ## 10. Fork and Exit
 
 No guild may prevent its members from forking (GS-CHR-008). No guild may prevent its members from exiting. Orientation can always leave.
-
----
 
 ## 11. Amendment
 
@@ -220,15 +189,12 @@ No guild may prevent its members from forking (GS-CHR-008). No guild may prevent
 
 Emergency amendments (new legal threat category) may be ratified by two-thirds of the Assembly with 14-day comment, subject to confirmation within 90 days.
 
----
-
 ## 12. Cross-References
 
 | Document | Relationship |
 |---|---|
-| GS-FND-001 Founding Signal | Cultural statement; derives from this Compact |
-| GS-FND-003 Core Blueprint | Architectural narrative; derives from this Compact |
-| GS-Audit-001 | Resolves the coherence audit findings |
+| GS-FND-001 Founding Signal | Cultural statement |
+| GS-FND-003 Core Blueprint | Architectural narrative |
 | GS-CHR-001 Hostile-State Resilience | Adversarial legality doctrine |
 | GS-CHR-002 Merit Protocol | Implements the Merit/Credits decoupling |
 | GS-CHR-003 Currency Annex | Implements Article II |
@@ -246,8 +212,6 @@ Emergency amendments (new legal threat category) may be ratified by two-thirds o
 | RS-INF-001 Guild Infra | Runtime implementation |
 | RS-INF-002 Ledger Schema | Data contract for Merit/Credits |
 | RS-INF-003 Frame Profile | Founding orientation and shear detection |
-
----
 
 ## 13. Effective Date
 
