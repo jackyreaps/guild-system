@@ -1,38 +1,57 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://guild-system.org/schemas/local-charter.checklist.json",
-  "title": "Local Guild Charter Checklist v1",
-  "description": "Required sections for a Local Guild Charter, per GS-CHR-010 §2. Used by Resileos to validate a filed charter before hosting.",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "additionalProperties": false,
-    "required": ["section", "title", "required"],
-    "properties": {
-      "section": { "type": "string" },
-      "title": { "type": "string" },
-      "required": { "type": "boolean" },
-      "notes": { "type": "string" }
-    }
-  },
-  "minItems": 16,
-  "maxItems": 16,
-  "default": [
-    { "section": "2.1", "title": "Guild Identity", "required": true },
-    { "section": "2.2", "title": "Jurisdictions", "required": true },
-    { "section": "2.3", "title": "Legal Form", "required": true },
-    { "section": "2.4", "title": "Membership and Alias Rules", "required": true },
-    { "section": "2.5", "title": "Internal Governance", "required": true },
-    { "section": "2.6", "title": "Currency and Exchange", "required": true },
-    { "section": "2.7", "title": "Merit Recognition", "required": true },
-    { "section": "2.8", "title": "Contribution Verification", "required": true },
-    { "section": "2.9", "title": "Founding Orientation", "required": true, "notes": "Statement, field coupled to, invariants." },
-    { "section": "2.10", "title": "Shear Detection Method", "required": true, "notes": "Method, indicators, threshold, cadence." },
-    { "section": "2.11", "title": "Fork Conditions", "required": true },
-    { "section": "2.12", "title": "Guardrail Declaration", "required": true },
-    { "section": "2.13", "title": "Conflict-of-Interest Rules", "required": true },
-    { "section": "2.14", "title": "Legal Compliance Statement", "required": true },
-    { "section": "2.15", "title": "Counsel Contact", "required": true },
-    { "section": "2.16", "title": "Legal Annex", "required": true }
-  ]
+  "$id": "https://github.com/jackyreaps/guild-system/schemas/local-charter.checklist.json",
+  "title": "Local Guild Charter — required sections checklist",
+  "description": "Checklist derived from GS-CHR-010 §2. A Local Guild Charter is valid only if every required section is present.",
+  "type": "object",
+  "required": [
+    "guild_identity",
+    "jurisdictions",
+    "legal_form",
+    "membership_rules",
+    "internal_governance",
+    "currency_system",
+    "merit_calibration",
+    "contribution_verification",
+    "founding_orientation",
+    "shear_detection",
+    "fork_conditions",
+    "guardrail_declaration",
+    "conflict_of_interest",
+    "legal_compliance",
+    "counsel_contact",
+    "legal_annex_ref"
+  ],
+  "properties": {
+    "guild_identity": { "type": "object", "required": ["name", "guild_id", "founding_date"] },
+    "jurisdictions": { "type": "object", "required": ["operation", "asset_holding"] },
+    "legal_form": { "type": "object", "required": ["entity_type", "registration_jurisdiction"] },
+    "membership_rules": { "type": "object", "required": ["join_process"] },
+    "internal_governance": { "type": "object", "required": ["decision_process", "amendment_process"] },
+    "currency_system": { "type": "object", "required": ["system", "compliance_annex_ref"] },
+    "merit_calibration": { "type": "object", "required": ["calibration_rules"] },
+    "contribution_verification": { "type": "object", "required": ["methods"] },
+    "founding_orientation": {
+      "type": "object",
+      "required": ["statement", "field_coupled_to", "invariants"],
+      "properties": {
+        "invariants": { "type": "array", "minItems": 3, "maxItems": 7, "items": { "type": "string" } }
+      }
+    },
+    "shear_detection": {
+      "type": "object",
+      "required": ["method", "indicators", "threshold", "review_cadence"],
+      "properties": {
+        "method": { "type": "string", "enum": ["peer_attestation", "metric_watch", "hybrid"] },
+        "indicators": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+        "review_cadence": { "type": "string", "enum": ["monthly", "quarterly", "annual"] }
+      }
+    },
+    "fork_conditions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "guardrail_declaration": { "type": "object", "required": ["compliance_statement"] },
+    "conflict_of_interest": { "type": "object", "required": ["disclosure_rules", "recusal_rules"] },
+    "legal_compliance": { "type": "object", "required": ["tax_integrity_statement", "disclosure_boundary_statement"] },
+    "counsel_contact": { "type": "object", "required": ["contact"] },
+    "legal_annex_ref": { "type": "string", "description": "Content-addressed reference to the filed legal annex." }
+  }
 }
