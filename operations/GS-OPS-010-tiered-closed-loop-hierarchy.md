@@ -11,7 +11,7 @@ review_cycle: annual
 
 Defines the tiered relationship between the guild's internal units — hub credits, guild credits, and merit — and specifies the flow rules between tiers. It exists to make the upward-consolidation path explicit while prohibiting the downward and external paths that would collapse the closed-loop structure.
 
-The core rule: **units flow up, never down. What crosses the boundary is merit, artifacts, and the member — not the credit instrument.**
+The core rule: **units flow up, never down. What crosses the boundary is work, merit, artifacts, and the member's capability — not the credit instrument.**
 
 ## 1. Purpose
 
@@ -81,13 +81,13 @@ No tier converts to external value. Not hub credits, not guild credits.
 
 ### 4.4 Cross-Hub Flow — Via Guild Credits Only
 
-Hub credits from hub A cannot be directly converted to hub credits from hub B. The only path between hubs is through guild credits: hub A credits → guild credits → hub B credits is not permitted (that would require downward flow). Hub A credits → guild credits is permitted, and the member now holds guild credits, which they may spend across all hubs.
+Hub credits from hub A cannot be directly converted to hub credits from hub B. The only path between hubs is through guild credits: hub A credits → guild credits is permitted, and the member now holds guild credits, which they may spend across all hubs.
 
 The distinction: a member consolidates hub A credits up to guild credits, and then spends guild credits on hub B goods. The hub B goods are paid for with guild credits, not with hub B credits. Hub B credits are earned separately, within hub B.
 
-## 5. What Crosses the Boundary
+## 5. The Loose Flow — What Crosses the Boundary
 
-The context boundary — between the guild's internal economy and the outside world — is crossed by four things, none of which is a credit instrument:
+The "loose" flow between the guild's internal economy and the outside world is the flow of work and capability, not the flow of credits. Four things cross the boundary, and none of them is a credit instrument.
 
 ### 5.1 Merit
 
@@ -105,18 +105,24 @@ A member may leave the guild at any time (Compact §10). They take their skills,
 
 A member who burns credits for a course or a compute allocation leaves with the knowledge, the skills, and any artifacts produced. The credits are consumed; the capability remains. This is the actual return on the member's contribution.
 
-## 6. The Loose Taking Outside
+The loose flow is deliberately asymmetrical. Work and capability flow out freely — a member is never trapped by their credits, never prevented from taking what they have learned, and never required to remain in the guild to realize the value of their contribution. The credit instrument alone does not flow. What the member has built with it does.
 
-What the guild does not do: it does not police private exchanges between members outside the guild's structures (GS-OPS-009 §7, GS-OPS-008 §8). If a member privately arranges to exchange their guild credits with another party for something of value, the guild does not review, endorse, or condemn the arrangement. The member acts alone, bears their own legal responsibility in their own jurisdiction, and the guild's protection does not extend to private arrangements outside its structures.
+## 6. Private Arrangements Between Members
 
-What the guild does not do: it does not provide any structural path for credits to exit. The guild does not offer redemption, conversion, cash-out, or any mechanism by which credits become external value. The structure is closed-loop by design.
+The loose flow in §5 is the guild's own boundary — what members carry out when they leave. This section is about a different question: private arrangements members make between themselves.
+
+The guild does not police private arrangements. If a member privately arranges to exchange their guild credits with another party for something of value, the guild does not review, endorse, or condemn the arrangement. The member acts alone, bears their own legal responsibility in their own jurisdiction, and the guild's protection does not extend to private arrangements outside its structures.
+
+The guild does not intermediate private arrangements. It provides no structural path by which credits become external value — no redemption, no conversion, no cash-out, no mechanism. What a member arranges privately is outside the guild's structure and outside the guild's responsibility.
+
+The guild does not shield private arrangements. If a member's private arrangement runs into legal trouble, the Defense Fund, the Juridical Chamber, and the Counsel Network do not extend to it. Those instruments cover guild work performed under guild structures. A member who acts alone acts alone.
 
 The distinction is important:
 
-- **Private arrangements** are outside the guild's authority and outside the guild's protection.
-- **Structural paths** are inside the guild's authority and do not exist for external conversion.
+- **The loose flow (§5)** is what the structure provides. It is the guild's own boundary, and the guild is responsible for it.
+- **Private arrangements (§6)** are what the structure does not touch. They are outside the guild's authority, outside the guild's intermediation, and outside the guild's protection.
 
-The "loose" part is real: the guild does not police what members do privately. The "taken outside" part is not: the structure itself provides no path.
+The "loose" in the hierarchy is real, and it lives in §5. The guild does not police private conduct, but it also does not offer a structural path for credits to exit. What exits is work and capability. The credit instrument does not.
 
 ## 7. Application to Hub Environments
 
@@ -184,5 +190,5 @@ Individual member balances and consolidation activity are not published. They ar
 | GS-OPS-004 §2.6 | The one-way rule — fiat never becomes credits, credits never become fiat |
 | GS-OPS-008 §5 | Allocation of reserves to members |
 | GS-OPS-009 §5 | Compute allocation — burn, pool draw, advance |
-| GS-OPS-009 §7 | Private arrangements — the "loose" position stated |
+| GS-OPS-009 §7 | Private arrangements — the position this document §6 extends |
 | RS-INF-002 §4 | Ledger records `hub_consolidate` events |
