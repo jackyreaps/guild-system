@@ -1,11 +1,9 @@
 ---
 doc: GS-CHR-005
 title: Branch Guardrails & Drift Prevention Protocol
-status: full
+status: draft
 category: charter
-authority: Assembly of Charters
-depends_on: [GS-FND-002, GS-Audit-001]
-boundary_amended: true
+depends_on: [GS-FND-002]
 review_cycle: annual
 ---
 
@@ -13,24 +11,16 @@ review_cycle: annual
 
 **Drift detection and the Drift Remedy Ladder. The process layer for internal guild governance.**
 
----
+## Boundary Statement
 
-## BOUNDARY STATEMENT
-
-**This document detects drift and manages the Drift Remedy Ladder.** It does not define structural compliance thresholds.
+This document detects drift and manages the Drift Remedy Ladder. It does not define structural compliance thresholds.
 
 - For entity structure compliance, see **GS-OPS-005** (Structural Insulation).
 - For reserve distribution compliance, see **GS-OPS-006** (Financial Resilience).
 
-This boundary was set by GS-Audit-001 §2.2 to eliminate triple-enforcement overlap.
-
----
-
 ## 1. Purpose
 
 The Templars were not destroyed by a single decision at the top. They were destroyed by a pattern of local drift that the center could not see until it was too late. This protocol makes drift visible early, defines the remedy ladder when it is detected, and prevents any single guild from reproducing the Templar failure modes locally.
-
----
 
 ## 2. The Seven Drift Patterns
 
@@ -44,8 +34,6 @@ The Templars were not destroyed by a single decision at the top. They were destr
 | **Entanglement** | Creditor to Philip | Creditor to a state | Sovereign dependency |
 | **Irreversibility** | No fork, no exit | Unforkable guild | No fork protocol |
 
----
-
 ## 3. Detection Mechanisms
 
 - **Peer attestation** — annual, cross-guild, signed
@@ -57,11 +45,9 @@ The Templars were not destroyed by a single decision at the top. They were destr
 
 The multi-guild structure is itself the detection system: every guild is every other guild's early warning.
 
----
-
 ## 4. The Drift Remedy Ladder
 
-**This is the seven-step Drift Remedy Ladder.** It applies exclusively to internal guild governance and cannot be substituted or cross-applied to the Demand Determination Scale (GS-CHR-006 §8), which governs external jurisdictional mandates.
+This framework applies exclusively to internal guild governance and cannot be substituted or cross-applied to the Demand Determination Scale (GS-CHR-006 §8), which governs external jurisdictional mandates.
 
 1. **Notice.** A peer guild or member files an observation with evidence.
 2. **Response.** Accused guild has a defined period to respond.
@@ -72,8 +58,6 @@ The multi-guild structure is itself the detection system: every guild is every o
 7. **Dissolution.** Voluntary, member-initiated, with artifact and asset transfer.
 
 No step involves a central authority destroying a guild. That is the direct answer to 1307.
-
----
 
 ## 5. Why This Is Not the Inquisition
 
@@ -86,14 +70,11 @@ Guardrails against a drift-detection system becoming a heresy tribunal:
 - Fork is always permitted.
 - Sunlight. All observations, findings, remedies are public.
 
----
-
 ## 6. Cross-References
 
 | Document | Relationship |
 |---|---|
 | GS-FND-002 §9 | Peer attestation mechanism |
-| GS-Audit-001 §2.2 | Process layer boundary |
 | GS-OPS-005 Structural Insulation | Architecture layer (referenced, not restated) |
 | GS-OPS-006 Financial Resilience | Reserve layer (referenced, not restated) |
 | GS-CHR-006 §8 | Demand Determination Scale (external — parallel) |
