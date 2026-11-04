@@ -9,7 +9,7 @@ review_cycle: annual
 
 # GS-OPS-008 — Treasury and Asset Allocation Protocol
 
-Specifies how a guild manages its reserves: how it apportions them across asset classes, how it exchanges between them lawfully, and how it acquires new capital. It is the fund-management layer that sits on top of the structural rules in GS-OPS-005 and the distribution thresholds in GS-OPS-006.
+Specifies how a guild manages its reserves: how it apportions them across asset classes, how it exchanges between them lawfully, how it allocates them to members, and how it acquires new capital. It is the fund-management layer that sits on top of the structural rules in GS-OPS-005, the distribution thresholds in GS-OPS-006, and the allocation mechanisms in GS-OPS-009.
 
 This document does not permit credits to become convertible. Article II of the Compact stands. The distinction is between *the guild's treasury holding and exchanging assets* (permitted, this document) and *the credits instrument being exchangeable for external value* (prohibited, Article II).
 
@@ -17,15 +17,17 @@ This document does not permit credits to become convertible. Article II of the C
 
 A guild holds reserves. Those reserves must be allocated across asset classes (cash, sovereigns, metals, crypto, compute, IP), rebalanced when conditions change, and exchanged when the guild needs a different asset to meet an obligation. The guild also acquires new capital over time — through grants, revenue, membership, and possibly lawful instruments.
 
-GS-OPS-006 specifies how much of a reserve can sit in one institution, jurisdiction, currency, or legal form. It does not specify what *mix* of assets the reserve is composed of, or how the guild moves between them, or how it acquires more.
+GS-OPS-006 specifies how much of a reserve can sit in one institution, jurisdiction, currency, or legal form. It does not specify what *mix* of assets the reserve is composed of, how the guild moves between them, how it allocates them to members, or how it acquires more.
 
-This document fills those three gaps. It does not weaken GS-OPS-005 or GS-OPS-006.
+This document fills those gaps. It does not weaken GS-OPS-005, GS-OPS-006, or GS-OPS-009.
 
 ## 2. Definitions
 
-- **Reserve asset class.** A category of holding with distinct risk, liquidity, and compliance properties. The classes recognized by this document are: operating cash, short-term sovereign securities, physical precious metals, digital assets held in regulated custody, compute credits, and intellectual property.
+- **Reserve asset class.** A category of holding with distinct risk, liquidity, and compliance properties. The classes recognized by this document are: operating cash, short-term sovereign securities, physical precious metals, digital assets held in regulated custody, compute, and intellectual property.
+- **Compute.** Allocated capacity for GPU hours, API tokens, storage, or other computational resources. Compute is a reserve asset class the guild may hold, purchase, receive as contribution, or acquire through barter. It is allocated to members through one of three mechanisms defined in GS-OPS-009 §5: burn on credits, draw from the compute pool, or advance against future contribution.
 - **Allocation policy.** A guild's written statement of target percentages across reserve asset classes, with permitted bands, rebalancing rules, and concentration limits.
 - **Exchange event.** A transaction in which a guild converts one reserve asset into another — for example, selling sovereigns to purchase compute, or converting EUR to SGD to meet a vendor obligation. An exchange event is between the guild's own reserve assets. It is not a conversion of credits to external value.
+- **Allocation event.** A transaction in which a guild provides a reserve asset to a member — compute, credits, or an internal service — in exchange for credit burn, contribution, or a recorded obligation. Allocation is internal. It is not a conversion, an exchange event, or a treasury outflow.
 - **Capital acquisition.** The acquisition of new reserves from outside the guild. Includes grants, donations, revenue from bounty work or compute provision, membership fees, and — where lawful and disclosed — borrowing or issuance of instruments.
 - **Capital instrument.** A financial instrument issued by a guild to an outside party in exchange for capital, with an expectation of return. Includes debt instruments, equity-like instruments, and any tokenized equivalent.
 
@@ -43,7 +45,7 @@ Target percentages across the reserve asset classes the guild holds. Example str
 | Short-term sovereigns | 30–40% | 24–72 hours | Multi-jurisdiction (§4.2) |
 | Physical metals | 5–15% | 72 hours | Licensed custodian |
 | Digital assets (regulated custody) | 0–10% | 24 hours | Licensed custodian only |
-| Compute credits | 10–20% | 24 hours | Multi-provider |
+| Compute | 10–20% | 24 hours | Multi-provider |
 | IP and long-term | remainder | 90 days | Direct ownership |
 
 The policy names the rationale for each band. "Diversification" is not a rationale. The rationale states what risk the band hedges.
@@ -54,7 +56,7 @@ The policy states when and how the guild rebalances. Minimum: annual review, plu
 
 ### 3.3 Concentration Limits
 
-In addition to GS-OPS-006 §4 (institutional, jurisdictional, currency, legal form, counterparty), the policy declares per-asset-class limits. Example: no more than 15% of reserves in any single digital asset.
+In addition to GS-OPS-006 §4 (institutional, jurisdictional, currency, legal form, counterparty), the policy declares per-asset-class limits. Example: no more than 15% of reserves in any single digital asset. No more than one-third of compute capacity from any single provider.
 
 ### 3.4 Review
 
@@ -73,9 +75,45 @@ When the guild needs to exchange one reserve asset for another — to pay a vend
 
 **What is not permitted:** exchanges designed to defeat a lawful obligation, exchanges with sanctioned parties, exchanges structured to hide beneficial ownership, exchanges that create an undisclosed concentrated position. GS-OPS-005 §6 and §9 apply in full.
 
-## 5. Capital Acquisition
+## 5. Allocation of Reserves to Members
 
-### 5.1 Ordinary Acquisition
+A guild holds reserves, and it also allocates those reserves to members. Allocation is distinct from exchange. Exchange is between the guild's own assets (bank to bank, sovereigns to compute). Allocation is from the guild to a member, in exchange for credit burn or a contribution obligation.
+
+The permitted allocation mechanisms are:
+
+### 5.1 Credits
+
+Credits are allocated per GS-OPS-009 §2 (mutual credit facility) and §3 (advance against contribution). A member receives credits either by drawing from the pool or by taking an advance. In both cases, the obligation is in contribution, not in fiat.
+
+### 5.2 Compute
+
+Compute is allocated per GS-OPS-009 §5. A member accesses guild-held compute through one of three paths:
+
+- **Burn.** The member burns Guild Credits for compute access. Event: `credits_burn`. Credits are consumed; no further obligation.
+- **Pool draw.** The member draws from the compute pool against future contribution. Event: `compute_pool_draw`, settled by `compute_pool_repay`.
+- **Advance.** The member takes a compute advance against a specified future contribution. Event: `compute_advance_issued`, settled by `compute_advance_settled`.
+
+The distinction between credit-based and compute-based allocation: credits are an internal accounting unit; compute is a resource. A member who has earned enough credits can burn them for compute. A member who has not yet earned enough can draw from the pool or take an advance against future contribution. All three paths are internal — no fiat, no conversion, no external value.
+
+### 5.3 Internal Services
+
+Courses, tools, mentorship, and other internal services are allocated through credit burn in the same manner as compute. Event: `credits_burn` with `resource: service:<type>`.
+
+### 5.4 What Allocation Is and Is Not
+
+**Allocation is:**
+- An internal transfer of a reserve asset from the guild to a member.
+- Recorded in the guild ledger as a `credits_burn`, `compute_pool_draw`, `compute_advance_issued`, or equivalent event.
+- Subject to per-member concentration limits declared in the guild's Local Charter.
+
+**Allocation is not:**
+- A conversion of credits to fiat. Credits are consumed; nothing external flows to the member.
+- A purchase of the asset. The member did not pay fiat; they earned credits by contribution, drew against future contribution, or took an advance.
+- A treasury outflow. The asset is already held; allocation is how the guild distributes access to it.
+
+## 6. Capital Acquisition
+
+### 6.1 Ordinary Acquisition
 
 Grants, donations, bounty revenue, compute provision revenue, and membership fees are ordinary capital acquisition. They satisfy:
 
@@ -86,7 +124,7 @@ Grants, donations, bounty revenue, compute provision revenue, and membership fee
 
 No additional approval required beyond the guild's own internal governance.
 
-### 5.2 Borrowing
+### 6.2 Borrowing
 
 A guild may borrow. Borrowing is subject to:
 
@@ -97,11 +135,9 @@ A guild may borrow. Borrowing is subject to:
 
 Borrowing that would trigger Entanglement Drift is prohibited. Borrowing that is diversified, documented, and lawful is permitted.
 
-**Borrowing is distinct from lending.** This section covers the guild as borrower. The guild as lender to members is governed by GS-OPS-009, which specifies three mechanisms — mutual credit, advance against contribution, and regulated pass-through — and prohibits zero-interest fiat lending from the guild to a member.
+**Borrowing is distinct from lending.** This section covers the guild as borrower. The guild as lender to members is governed by GS-OPS-009, which specifies the mechanisms — mutual credit, advance against contribution, regulated pass-through, and compute allocation — and prohibits zero-interest fiat lending from the guild to a member.
 
-The guild does not lend fiat at below-market rates. A member needing fiat goes through the regulated pass-through in GS-OPS-009 §4. A member needing internal credits goes through the mutual credit facility in GS-OPS-009 §2 or the advance mechanism in GS-OPS-009 §3.
-
-### 5.3 Capital Instruments
+### 6.3 Capital Instruments
 
 A guild may issue a capital instrument (debt or equity-like) to outside parties only if all of the following hold:
 
@@ -113,16 +149,17 @@ A guild may issue a capital instrument (debt or equity-like) to outside parties 
 
 A capital instrument that does not satisfy all five conditions is prohibited. It is prohibited not because capital acquisition is wrong, but because a non-compliant instrument is a securities-law liability and a governance-capture risk in one wrapper.
 
-### 5.4 What Capital Acquisition Does Not Authorize
+### 6.4 What Capital Acquisition Does Not Authorize
 
 - It does not authorize making Guild Credits convertible. Article II stands.
 - It does not authorize granting decision rights to outside capital. Compact §7 (Authority Article) stands.
 - It does not authorize concentration above the thresholds in GS-OPS-005 §8 and GS-OPS-006 §4.5.
 - It does not authorize any structure that fails GS-OPS-005 §6 (disclosure boundary).
+- It does not authorize any mechanism by which fiat or an external provider's credits can become Guild Credits. The one-way rule (GS-OPS-004 §2.6) applies to every capital acquisition.
 
 Capital acquisition is legitimate. Taking on outside money is not the same as taking on outside authority.
 
-## 6. Digital Assets as a Reserve Asset Class
+## 7. Digital Assets as a Reserve Asset Class
 
 A guild may hold digital assets as a reserve asset if and only if all of the following hold:
 
@@ -141,28 +178,30 @@ A guild may hold digital assets as a reserve asset if and only if all of the fol
 
 The line is: **the guild may hold digital assets as it may hold gold.** The guild does not issue digital assets, does not make them exchangeable for credits, and does not use them as a payment system for members.
 
-## 7. Private Arrangements
+## 8. Private Arrangements
 
 The treasury rules in this document govern the guild's own reserves and the guild's own transactions. They do not govern arrangements members make between themselves outside the guild's structures.
 
-If members arrange credit, exchange, or support between themselves privately — along the lines of the mechanisms in GS-OPS-009 or otherwise — the guild does not review, endorse, or condemn those arrangements. Members are responsible for their own conduct and their own legal compliance in their own jurisdictions. The guild's protection (Defense Fund, Chamber, Counsel Network) extends to guild work under guild structures, not to private arrangements outside them.
+If members arrange credit, exchange, compute sharing, or support between themselves privately — along the lines of the mechanisms in GS-OPS-009 or otherwise — the guild does not review, endorse, or condemn those arrangements. Members are responsible for their own conduct and their own legal compliance in their own jurisdictions. The guild's protection (Defense Fund, Chamber, Counsel Network) extends to guild work under guild structures, not to private arrangements outside them.
 
-This is the same position stated in GS-OPS-009 §6.
+The same position is stated in GS-OPS-009 §7.
 
-## 8. Prohibited Activities
+## 9. Prohibited Activities
 
 None of the following are permitted, regardless of how they are characterized:
 
 - Conversion of Guild Credits to fiat, crypto, or any external store of value (Compact Article II).
 - Any endpoint, function, or workflow that converts credits to external value (RS-INF-002 §7.2).
-- Any capital instrument that grants governance rights or conversion rights (this document §5.3).
-- Any digital asset holding that fails §6 conditions.
+- Any capital instrument that grants governance rights or conversion rights (this document §6.3).
+- Any digital asset holding that fails §7 conditions.
 - Any exchange event designed to defeat a lawful obligation or evade sanctions.
 - Any structure that fails GS-OPS-005 §6 (disclosure boundary).
 - Any concentration above GS-OPS-005 §8 or GS-OPS-006 §4 thresholds, including through capital instruments.
-- Zero-interest fiat lending from the guild to a member (GS-OPS-009 §5).
+- Zero-interest fiat lending from the guild to a member (GS-OPS-009 §6).
+- Compute allocation at a premium (GS-OPS-009 §5.6).
+- Reselling of allocated compute (GS-OPS-009 §5.6).
 
-## 9. Compliance Surfaces
+## 10. Compliance Surfaces
 
 Every treasury operation touches, at minimum:
 
@@ -176,20 +215,21 @@ Every treasury operation touches, at minimum:
 
 Per-jurisdiction review is documented in the guild's Legal Annex (GS-CHR-010 §2.16).
 
-## 10. Transparency
+## 11. Transparency
 
 Each guild publishes in its annual transparency report:
 
 - The target allocation bands (not the actual amounts, which are sensitive).
 - Aggregate reserve composition by asset class (ranges, not precise figures).
 - Aggregate exchange activity (by asset class, no individual trades).
+- Aggregate allocation activity (by asset class, no individual member details).
 - Any capital instrument issued, with amount, type, and jurisdiction.
 - Any borrowing above the guild's declared threshold.
 - Any digital-asset holding, by class and custodian jurisdiction.
 
 Individual counterparties, amounts, and account details are not published. They are available to lawful authorities on request under GS-OPS-005 §6.
 
-## 11. Cross-References
+## 12. Cross-References
 
 | Document | Relationship |
 |---|---|
@@ -200,6 +240,7 @@ Individual counterparties, amounts, and account details are not published. They 
 | GS-OPS-004 | Compute and treasury compliance — the compliance layer this document sits on |
 | GS-OPS-005 §4, §6, §8 | Counterparty rules, disclosure boundary, anti-concentration |
 | GS-OPS-006 §4, §5 | Distribution requirements and contingency pool |
-| GS-OPS-009 | Emergency liquidity — the guild as lender to members |
+| GS-OPS-009 | Emergency liquidity, mutual credit, compute allocation |
 | GS-MTX-005 | Credit exposure — confirms credits remain internal |
+| RS-INF-002 §4 | Ledger events including `compute_pool_draw`, `compute_advance_issued` |
 | RS-INF-002 §7.2 | API prohibition of conversion endpoints |
