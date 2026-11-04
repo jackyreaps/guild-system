@@ -34,7 +34,7 @@ If the Signal and the Compact contradict each other, the Compact governs (Compac
 
 ## 3. The Operational Layer Underneath
 
-The Compact establishes rules. The charters, operations, and matrices implement them. The mapping is roughly:
+The Compact establishes rules. The charters, operations, and matrices implement them.
 
 - **Charters (CHR)** derive their authority from the Compact and specify binding rules at the system level. They are where the Compact's abstract principles become concrete procedures.
 - **Operations (OPS)** implement the charter rules at the operational level. They are the how-to layer.
@@ -53,7 +53,7 @@ Different readers should start in different places.
 
 **If you are a legal reviewer:** read GS-FND-002 §4 (Operating Articles) and §5 (Structural Principles), then GS-OPS-005 (insulation), GS-OPS-006 (resilience), and GS-CHR-006 (Chamber). The disclosure boundary is in GS-OPS-005 §6.
 
-**If you are a technologist:** read GS-FND-002 §4 Article I (data boundary), GS-CHR-009 (interoperability), and the three Resileos documents (`RS-INF-001`, `RS-INF-002`, `RS-INF-003`) which specify the runtime.
+**If you are a technologist:** read GS-FND-002 §4 Article I (data boundary), GS-CHR-009 (interoperability), and the three Resileos documents (RS-INF-001, RS-INF-002, RS-INF-003) which specify the runtime.
 
 **If you are looking for the shortest possible summary:** read GS-FND-001 §3 (commitments) and GS-FND-002 §6 (minimum standards). Those two sections capture the system's shape in a page and a half.
 
@@ -71,6 +71,6 @@ Different readers should start in different places.
 | GS-FND-001 | The public-facing signal this document maps |
 | GS-FND-002 | The binding document this document maps |
 | INDEX.md | The complete document inventory and dependency chain |
-| RS-INF-001 | Runtime implementation |
-| RS-INF-002 | Ledger data contract |
-| RS-INF-003 | Frame profile — founding orientation and shear detection |
+| RS-INF-001 | Runtime implementation (planned) |
+| RS-INF-002 | Ledger data contract (planned) |
+| RS-INF-003 | Frame profile — founding orientation and shear detection (planned) |
