@@ -23,8 +23,9 @@ The Guild System operates alongside two other projects. They meet at defined int
 ## Where to start
 
 1. **[The Compact](foundation/GS-FND-002-compact.md)** — the founding document. Four Operating Articles, four Structural Principles, the Authority Article, core definitions, and minimum standards. Everything else derives from it.
-2. **[The Audit Resolution](audit/GS-Audit-001-resolution-directives.md)** — the architectural decisions that resolved the coherence audit: Operating Articles vs Structural Principles, the three-layer concentration division, the Merit/Credits ledger decoupling, and the Drift Remedy Ladder / Demand Determination Scale rename.
-3. **[The Master Index](INDEX.md)** — every document in the system, with status and cross-references.
+2. **[The Foundation Layer Map](foundation/GS-FND-003-foundation-layer.md)** — a short reader's map explaining how the Founding Signal and the Compact relate, and how the operational layer fits under them.
+3. **[The Founding Signal](foundation/GS-FND-001-founding-signal.md)** — the public-facing statement of purpose and culture.
+4. **[The Master Index](INDEX.md)** — every document in the system, with status and cross-references.
 
 ## Core principles
 
@@ -48,12 +49,13 @@ There is no central authority. Authority is granted by specific documents to spe
 
 ## Status
 
-This is a live architectural document set. Some documents are complete; some are in structure; some are queued behind dependencies. **[INDEX.md](INDEX.md)** is the authoritative status record.
+This is a live architectural document set. All documents in the repository are in draft status pending ratification by chartered guilds. **[INDEX.md](INDEX.md)** is the authoritative status record.
 
 ## Cross-repo pointers
 
 - **Resileos-QAI implementation program** — `RS-INF-001` lives at `Resileos-QAI/docs/320-titanos/guild-infra-program.md`. It is the program of record for the runtime hub and ledger. It binds to this Compact and to GS-CHR-002 / GS-CHR-003, but it is not copied into this repo.
-- **Ledger schema** — `RS-INF-002` lives at `Resileos-QAI/docs/320-titanos/ledger-schema.md`. It implements the Merit/Credits decoupling defined in this Compact and in GS-Audit-001 §4.1.
+- **Ledger schema** — `RS-INF-002` lives at `Resileos-QAI/docs/320-titanos/ledger-schema.md`. It implements the Merit/Credits decoupling defined in this Compact.
+- **Frame profile** — `RS-INF-003` lives at `Resileos-QAI/docs/320-titanos/frame-profile.md`. It defines how a guild's founding orientation and shear detection are recorded in the ledger.
 - **Framework reference** — the QD-TER Human Medium framework and the `/Guild/README.md` pointer live in `jackyreaps/QD-TER-Human-Medium`.
 
 ## License
