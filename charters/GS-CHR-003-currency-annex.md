@@ -3,7 +3,7 @@ doc: GS-CHR-003
 title: Currency and Exchange Annex
 status: draft
 category: charter
-depends_on: [GS-FND-002]
+depends_on: [GS-FND-002, GS-OPS-008, GS-OPS-009]
 runtime_impl: RS-INF-002
 review_cycle: annual
 ---
@@ -12,7 +12,7 @@ review_cycle: annual
 
 ## 1. Purpose
 
-Guild Credits are internal accounting units. This Annex specifies their convertibility boundaries, the compliance surfaces they touch, and the prohibited structures that would turn them into a compliance liability. Implements Operating Article II of the Compact.
+Guild Credits are internal accounting units. This Annex specifies their convertibility boundaries, the compliance surfaces they touch, and the prohibited structures that would turn them into a compliance liability. It implements Operating Article II of the Compact.
 
 ## 2. The Convertibility Boundary
 
@@ -65,6 +65,9 @@ The less convertible a unit, the lower its tax and regulatory exposure, and the 
 - Bounty escrow with counsel oversight
 - Compute barter under contract
 - Mutual-aid pools within legal limits
+- Mutual credit facilities, per GS-OPS-009 §2
+- Advances against future contribution, per GS-OPS-009 §3
+- Regulated pass-through fiat facilities at market rate, per GS-OPS-009 §4
 
 **Prohibited:**
 - Unlicensed money transmission
@@ -73,14 +76,24 @@ The less convertible a unit, the lower its tax and regulatory exposure, and the 
 - Wage substitution designed to avoid employment law
 - Anonymous large-value settlement
 - Convertible units without a compliance annex
+- Zero-interest or below-market fiat lending from the guild to a member (GS-OPS-009 §5)
+- Fiat lending from the mutual credit pool (GS-OPS-009 §5)
 
-**Runtime:** `RS-INF-002` §7.2 prohibits `/convert`, `/redeem`, `/transfer`, `/purchase`, `/withdraw` endpoints. Their absence is structural.
+**Runtime:** `RS-INF-002` §7.2 prohibits `/convert`, `/redeem`, `/transfer`, `/purchase`, `/withdraw` endpoints. Their absence is structural. Mutual credit and advance events are recorded in the ledger as `advance_issued` and `advance_settled`; they are not conversion events.
 
-## 7. Per-Guild Compliance Annex Requirement
+## 7. Private Arrangements Between Members
+
+This Annex governs the guild's structures and the credits instrument. It does not govern arrangements members make between themselves outside those structures.
+
+If members arrange credit, exchange, or support privately, the guild does not review, endorse, or condemn those arrangements. Members are responsible for their own conduct and their own legal compliance in their own jurisdictions. The guild's protection extends to guild work under guild structures, not to private arrangements outside them.
+
+The full statement of this position is in GS-OPS-009 §6.
+
+## 8. Per-Guild Compliance Annex Requirement
 
 Every guild operating any non-closed-loop instrument files a Compliance Annex reviewed by local counsel. The annex names: instrument type, jurisdiction(s), legal regime, mitigation applied, counsel contact.
 
-## 8. Cross-References
+## 9. Cross-References
 
 | Document | Relationship |
 |---|---|
@@ -89,5 +102,7 @@ Every guild operating any non-closed-loop instrument files a Compliance Annex re
 | GS-CHR-002 Merit Protocol | Merit system, separate from Credits |
 | GS-OPS-005 Structural Insulation | Entity structure hosting Credits |
 | GS-OPS-006 Financial Resilience | Reserve distribution |
+| GS-OPS-008 | Treasury allocation, exchange between reserve assets |
+| GS-OPS-009 | Emergency liquidity and mutual credit mechanisms |
 | GS-MTX-005 Credit Exposure Matrix | Full exposure matrix |
 | RS-INF-002 Ledger Schema | Storage and API boundary |
