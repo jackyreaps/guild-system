@@ -1,155 +1,218 @@
 ---
-doc: GS-CHR-002
-title: Merit Protocol & Commensuration Rules
-status: full
-category: charter
-authority: Assembly of Charters
-depends_on: [GS-FND-002, GS-Audit-001]
-runtime_impl: RS-INF-002 §3.2, RS-INF-003
-review_cycle: annual
+doc: GS-FND-002
+title: The Compact of the Guild System
+status: draft
+category: foundation
+binds: true
+supersedes: all prior Compact drafts
+review_cycle: biennial
 ---
 
-# GS-CHR-002 — Merit Protocol & Commensuration Rules
-
-**Merit as commensuration across disciplines. The standard that lets a proof and a training loop be compared.**
-
----
+# GS-FND-002 — The Compact of the Guild System
 
 ## 1. Purpose
 
-Merit is not a scoreboard. It is a codifying mechanism — the unit that lets a formalist's proof and a builder's training loop be placed on the same plane. This document specifies what counts as contribution, how contributions are weighted across domains, how Merit is recorded, and how it is protected from gaming.
+This Compact establishes the minimum standards every chartered guild must meet, the eight foundational rules that govern the system's operation and structure, the authority under which the system acts, and the relationship between this document and every other document in the Guild System inventory.
 
-It implements the Merit Ledger defined in GS-FND-002 §3 and `RS-INF-002` §3.2. It does not implement the Credits Ledger — that is GS-CHR-003.
+Every other GS-* document derives its authority from this Compact. Where a contradiction exists, this Compact governs and the contradicting document is amended.
 
----
+## 2. What the Guild System Is
 
-## 2. The Commensuration Problem
+A polycentric network of autonomous guilds — each with its own culture, currency, and internal governance — interoperating through a shared protocol for merit recognition, contribution verification, and idea protection.
 
-A proof and a training loop are not naturally comparable. Institutional title fails as a comparator. Citation count fails. What does not fail is a single property both share: **the claim can be independently verified by a third party who does not trust the contributor.**
+No headquarters. No central board. No legal personality at the system level. A meta-structure: a minimal shared layer over many sovereign local guilds.
 
----
+Its purpose is to provide a lawful, merit-based alternative to institutional narrative control — a place where formalists and builders can work together on problems that matter, with their contributions recognized by peers and protected by structure.
 
-## 3. The Universal Primitive: Independent Verifiability
+**Runtime:** Resileos-QAI (`RS-INF-001`, `RS-INF-002`, `RS-INF-003`). Framework: QD-TER-Human-Medium. Policy: this repository.
 
-| Contribution Type | Verification Method |
-|---|---|
-| Formal proof | Proof checker / proof assistant |
-| Formalization | Proof assistant compilation |
-| Training loop | Execution with reproducible output |
-| Benchmark | Independent replication |
-| Red-team report | Reproduction of the vulnerability |
-| Reproducibility audit | Independent rerun |
-| Dataset | Independent validation |
-| Tooling | Independent use in another project |
-| Teaching | Verified learner outcome |
-| Mentorship | Longitudinal peer attestation |
+## 3. Core Definitions
 
-Merit is awarded on verification, not on claim.
+- **The Compact.** This document. Holds no assets, signs no contracts, employs no one, has no legal personality, cannot be served.
+- **Chartered Guild.** An autonomous legal entity that has adopted this Compact, filed a Local Guild Charter (GS-CHR-010), and been attested by peer guilds.
+- **Circle.** A working group within a guild — formalist, empirical, forge, or distribution.
+- **Forge Circle.** A temporary, mission-specific circle formed when formalist and empirical members overlap.
+- **Member.** An individual participating in a chartered guild under a moniker. Membership does not require disclosure of legal identity at the system level.
+- **Moniker.** A persistent pseudonymous identity bound to a cryptographic keypair.
+- **Merit.** A permanent, non-transferable, non-purchasable record of verified contribution. The exclusive metric for governance authority, calibration rights, and peer attestation weighting. Stored in the Merit Ledger (`RS-INF-002` §3.2).
+- **Credits.** A variable internal accounting unit used to access shared compute, tools, material resources, and educational services. Burn-on-use. Cannot be converted to Merit. Stored in the Credits Ledger (`RS-INF-002` §3.2).
+- **Reserve.** Any asset held by a guild for operational continuity.
+- **Guild Work.** Public or authorized contribution produced under a guild charter.
+- **Hostile State.** A state actor using unlawful, predatory, or extrajudicial means to suppress lawful public-interest work. See GS-CHR-001 §3.2 for the expanded definition covering law-as-weapon.
+- **Legitimate Legal Demand.** A request satisfying the Legitimacy Test (GS-CHR-006 §6): lawful basis, due process, proportionality, jurisdiction, human-rights compliance, targeting of lawful work, absence of pretext. A demand can be lawful under local statute and still fail the test if the law itself is predatory.
+- **Predatory Request.** A demand failing any criterion of the Legitimacy Test.
 
----
+## 4. The Four Operating Articles
 
-## 4. Merit Dimensions
+### Article I — Public or Authorized Data Separation
 
-Every contribution is scored across six dimensions:
+The Guild System works only with public or explicitly authorized data. No guild, circle, or member may use covert data acquisition, unauthorized access, proprietary telemetry without consent, or trade secrets as the basis of any Guild artifact.
 
-1. **Verification strength** — how independently confirmable
-2. **Novelty** — new result vs. replication
-3. **Difficulty** — domain-calibrated
-4. **Downstream use** — did others build on it
-5. **Robustness** — did it survive adversarial review
-6. **Teaching value** — did it raise others' capability
+Public data, open weights, voluntarily disclosed whistleblower material through lawful channels, and authorized audit telemetry are permitted. Everything else is prohibited.
 
-Each dimension is scored on a published scale (0–5). The total is the base Merit weight. Domain-specific weighting may adjust within a factor of two.
+**Runtime:** Resileos enforces this at the namespace layer (`RS-INF-001` §3).
 
----
+### Article II — Non-Convertible System Credits
 
-## 5. Command Contribution
+Guild Credits are internal accounting units. They cannot be exchanged for fiat, cryptocurrency, or any external store of value. Earned by contribution, burned on consumption of internal goods.
 
-Added per GS-Audit-001 and GS-FND-002 §7.7.
+The convertibility cap avoids tax and regulatory exposure, ensures credits can only build capability, and prevents credits from becoming speculative or capturable.
 
-Leading under threat — maintaining parallel transport under stress — is a recognized contribution. Examples:
-- Coordinating an emergency response during a member's detention
-- Making the call that saves a guild from a legal attack
-- Sustaining a Fork Circle through a split
-- Holding a defense position in a hostile jurisdiction
+Any guild wishing to operate a semi-closed or convertible instrument must file a compliance annex (GS-CHR-003) and obtain local counsel sign-off. The default is closed-loop.
 
-Command contribution is verified by peer attestation from at least two members of the affected circle. It is recorded in the Merit Ledger with a `command_contribution` event (`RS-INF-002` §4 extension in Phase B).
+**Runtime:** `RS-INF-002` §7.2 prohibits `/convert`, `/redeem`, and `/transfer` endpoints. Their absence is structural.
 
----
+### Article III — The Tax-Integrity Floor
 
-## 6. Per-Guild Calibration
+Every member and every guild meets lawful tax obligations in their jurisdictions of residence, operation, and holding. No Guild structure conceals income, mischaracterizes compensation, defeats a lawful tax obligation, or moves value to defeat a lawful obligation.
 
-**Per GS-Audit-001 §3.2, Domain Councils are removed.** Calibration is per-guild, subject to cross-branch peer attestation at the annual charter renewal cycle.
+Guild Credits route *surplus contribution* toward public-good functions (Article IV). They never route *around* a legal duty. Every guild files a local civic-provision annex reviewed by counsel (GS-CHR-004). If a structure cannot pass lawful inquiry, it is not a Guild structure.
 
-Each guild publishes its calibration rules in its Local Charter (GS-CHR-010). No central body sets weights. No cross-guild body may unilaterally inflate its own weight.
+### Article IV — Civic Substitution over Capital Accumulation
 
----
+The Guild System exists to provide where provision is absent. Where public goods are unfunded, corrupted, or denied, voluntary mutual institutions may provide them in parallel.
 
-## 7. Attestation Format
+The floor every guild must recognize:
+- Education and literacy
+- Health and mental health support
+- Local infrastructure and logistics
+- Emergency response
+- Legal aid and rights education
+- Science and civic literacy
+- Care work
 
-Merit attestations are signed, portable, content-addressed. They reference the artifact, not the person. They include:
-- Artifact content hash
-- Verification evidence (proof checker output, test results, reproduction log)
-- Six-dimension scoring
-- Attestor signature
-- Timestamp
+Guilds may expand this list. They may not subtract.
 
-Attestations are stored in the ledger event log (`RS-INF-002` §3.4) as `merit_award` events.
+## 5. The Four Structural Principles
 
----
+### Principle I — Exemption through Provision
 
-## 8. Cross-Guild Recognition
+No guild may seek exemption from lawful local obligations. Civic provision is the substitute for privilege, never a claim to it.
 
-Cross-guild merit recognition is Phase C of `RS-INF-001`. It reads the published attestation format (GS-CHR-009) rather than the raw ledger. Until GS-CHR-009 is ratified, cross-guild recognition is manual and per-agreement between guilds.
+### Principle II — Velocity of Flow over Hoarding
 
----
+No guild may accumulate convertible assets beyond what its mission and contingency pool require. Reserves circulate. Credits are spent. Concentration rules apply: no guild may hold more than one-third of reserves in a single institution, and no single counterparty may represent more than a defined share of income.
 
-## 9. Anti-Gaming
+**Cross-reference:** `GS-OPS-005` §8, `GS-OPS-006` §4.
 
-Merit is a target. Attack vectors (full analysis in GS-MTX-003):
-- **Sybil farming** — multiple monikers by the same person
-- **Collusive attestation rings** — small groups attesting to each other
-- **Plagiarism** — re-attesting copied work
-- **Merit laundering through forks** — copying Merit to a new guild
-- **Bought Merit** — payment for attestation
-- **Sockpuppet review** — fake peer validation
+### Principle III — Polycentricity over Patronage
 
-Mitigations:
-- Anonymity-set attestation (attestor identity hidden from attestee until reveal)
-- Cross-guild diversity requirement for high-weight attestations
-- Content-addressed artifact tracking (plagiarism detectable via hash)
-- Merit non-transferability (laundering prevention by schema)
-- Periodic re-verification of high-merit contributions
+No guild may depend on a single funder, university, lab, state, legal form, or jurisdiction. Distribution requirements apply: assets in two or more jurisdictions, records in two or more, legal personality in a rule-of-law jurisdiction, membership distributed.
 
----
+**Cross-reference:** `GS-OPS-005` §7, `GS-OPS-006` §4.
 
-## 10. Appeals, Corrections, Decay
+### Principle IV — Verifiability over Secrecy
 
-**Appeals:** Any member may appeal a Merit award within 30 days. Appeals are heard by peer attestors not involved in the original award.
+No guild may be operationally opaque. Members may be pseudonymous; the guild's methods, artifacts, financial summaries, and operation must be verifiable by peers.
 
-**Corrections:** If an artifact is found to be incorrect or fraudulent, the original Merit may be rescinded and a `merit_rescind` event recorded. Merit is non-decreasing by default; rescission is the sole exception and requires two-thirds of the guild's attesting peers.
+**Runtime:** `RS-INF-001` §3.2 names this as the reason for the namespaced subject scheme. `RS-INF-003` operationalizes it via the frame profile's claim labels.
 
-**Decay:** Merit does not decay. It is a permanent record. Downstream use continues to inform weighting.
+## 6. Minimum Standards
 
----
+Every chartered guild must meet all of the following:
 
-## 11. Privacy
+1. **Adopt the Compact.** File a signed declaration of adoption.
+2. **File a Local Guild Charter** (GS-CHR-010) declaring legal form, jurisdictions, funding sources, jurisdiction spread, fork readiness, founding orientation, and shear detection method.
+3. **Operate lawfully.** Comply with tax, sanctions, AML/KYC, money transmission, employment, and consumer protection law.
+4. **Publish artifacts.** Every Guild artifact is signed, reproducible, and publicly available.
+5. **Maintain fork readiness.** Every guild has a Fork and Secession Protocol on file (GS-CHR-008) and can be forked by its members on defined conditions.
+6. **Maintain the Defense Fund contribution.** Every guild contributes to the Defense Fund under GS-CHR-006 §5.4.
+7. **Submit to peer attestation.** Every guild attests to peer guilds annually, and is attested by them.
+8. **Comply with the disclosure boundary.** If a lawful authority asks who ultimately benefits from any structure, the answer is available (GS-OPS-005 §6).
 
-Merit is recorded against the moniker, never against a legal identity. Attribution of Merit to a legal person is the member's choice (via GS-CHR-011) and never required by the Guild System.
+**Runtime:** Resileos will not host a guild without a filed GS-CHR-010 (`RS-INF-001` §2.1).
 
----
+## 7. The Authority Article
+
+### 7.1 No Central Authority
+
+No executive, legislative, or judicial power is granted to any body at the system level.
+
+### 7.2 Authority Is Granted, Not Assumed
+
+Where authority exists, it is granted by a specific document to a specific body for a specific purpose.
+
+### 7.3 Authority Is Bounded
+
+Every grant specifies: purpose, time period, scope of decisions, disclosure requirements, appeal mechanism.
+
+### 7.4 Authority Is Sunset
+
+No grant is permanent. Emergency authority expires faster than routine authority.
+
+### 7.5 Authority Is Revocable
+
+Every grant is revocable by the Assembly of Charters under its own procedures.
+
+### 7.6 Authority Is Accountable
+
+Every body exercising granted authority is subject to after-action review by peer attestation. The review is published.
+
+### 7.7 Command Contribution
+
+Leading under threat — maintaining parallel transport under stress — is a recognized contribution under GS-CHR-002 §5. Members who exercise granted authority well are recorded in the Merit Ledger. Members who abuse it are subject to the Drift Remedy Ladder (GS-CHR-005 §4).
+
+## 8. Document Relationship
+
+- **FND (Foundation) binds.** The Compact is the sole binding document in this category.
+- **CHR (Charters) derives.** Charters take authority from the Compact.
+- **OPS (Operations) implements.** Operations implement Charter rules.
+- **MTX (Matrices) illustrates.** Matrices inform; they do not bind.
+- **REF (Reference) informs.** Reference documents provide context.
+
+Where documents conflict: FND > CHR > OPS > MTX > REF.
+
+## 9. Peer Attestation
+
+Every chartered guild is attested annually by at least two peer guilds not under its own charter. Attestation confirms:
+
+- Compliance with the Compact and the guild's own charter
+- Compliance with the eight foundational rules
+- Fork readiness
+- Publication and disclosure status
+- Concentration and distribution status
+
+Attestation is signed, public, and subject to appeal. Failure to obtain attestation triggers the Drift Remedy Ladder (GS-CHR-005 §4).
+
+**Runtime:** Resileos stores attestations but does not perform them (`RS-INF-001` §5).
+
+## 10. Fork and Exit
+
+No guild may prevent its members from forking (GS-CHR-008). No guild may prevent its members from exiting. Orientation can always leave.
+
+## 11. Amendment
+
+1. Proposal by any chartered guild.
+2. Public comment period of at least 60 days.
+3. Ratification by two-thirds of chartered guilds in good standing.
+4. Publication of amended text with revision history.
+
+Emergency amendments (new legal threat category) may be ratified by two-thirds of the Assembly with 14-day comment, subject to confirmation within 90 days.
 
 ## 12. Cross-References
 
 | Document | Relationship |
 |---|---|
-| GS-FND-002 §3, §4 Art. II, §7.7 | Merit definition, non-conversion, command contribution |
-| GS-Audit-001 §3.1 | Ledger decoupling |
-| GS-CHR-003 Currency Annex | Credits system, separate from Merit |
-| GS-CHR-005 Branch Guardrails | Drift detection includes Merit gaming |
-| GS-CHR-010 Local Charter | Per-guild calibration rules |
-| GS-CHR-011 Identity and Alias | Merit-to-legal-identity binding (opt-in) |
-| GS-MTX-003 Merit Anti-Gaming | Full attack vector analysis |
-| GS-MTX-004 Merit Commensuration | Cross-domain comparison matrix |
-| RS-INF-002 Ledger Schema | Storage format |
-| RS-INF-003 Frame Profile | Claim labeling for merit attestations |
+| GS-FND-001 Founding Signal | Cultural statement |
+| GS-FND-003 Core Blueprint | Architectural narrative |
+| GS-CHR-001 Hostile-State Resilience | Adversarial legality doctrine |
+| GS-CHR-002 Merit Protocol | Implements the Merit/Credits decoupling |
+| GS-CHR-003 Currency Annex | Implements Article II |
+| GS-CHR-004 Civic Substitution | Implements Articles III and IV |
+| GS-CHR-005 Branch Guardrails | Implements the Drift Remedy Ladder |
+| GS-CHR-006 Juridical Chamber | Implements Authority §7 |
+| GS-CHR-008 Fork and Secession | Implements §10 |
+| GS-CHR-010 Local Charter Template | Implements §6 |
+| GS-OPS-001 First 24 Hours | Implements emergency authority §7.4 |
+| GS-OPS-005 Structural Insulation | Implements Principles II, III, IV |
+| GS-OPS-006 Financial Resilience | Implements Principles II, III |
+| GS-OPS-007 Modular Proxy | Corporate tiering for Principles II, III |
+| GS-MTX-001 Adversarial Legality | Threat mapping |
+| GS-REF-001 Historical Overlay | Historical foundation |
+| RS-INF-001 Guild Infra | Runtime implementation |
+| RS-INF-002 Ledger Schema | Data contract for Merit/Credits |
+| RS-INF-003 Frame Profile | Founding orientation and shear detection |
+
+## 13. Effective Date
+
+Upon ratification by two-thirds of chartered guilds in good standing. Biennial review. Emergency review on material change.
