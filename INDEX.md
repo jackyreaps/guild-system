@@ -59,8 +59,8 @@ The authoritative document hierarchy is stated in Compact §8: FND > CHR > OPS >
 
 | ID | Title | Status | File |
 |---|---|---|---|
-| GS-REF-002 | Threat Pattern Analysis | Draft | `reference/GS-REF-002-threat-analysis.md` |
-| GS-REF-003 | Standard Write-Up Template | Draft | `reference/GS-REF-003-write-up-template.md` |
+| GS-REF-001 | Threat Pattern Analysis | Draft | `reference/GS-REF-001-threat-analysis.md` |
+| GS-REF-002 | Standard Write-Up Template | Draft | `reference/GS-REF-002-write-up-template.md` |
 
 ## External programs of record (not copied into this repo)
 
