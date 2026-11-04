@@ -1,93 +1,71 @@
 ---
-doc: GS-CHR-001
-title: Hostile-State Resilience Charter
-status: recast-pending
-category: charter
-authority: Assembly of Charters
+doc: GS-FND-001
+title: Founding Signal & Cultural Manifesto
+status: draft
+category: foundation
 depends_on: [GS-FND-002]
-review_cycle: annual
+review_cycle: biennial
 ---
 
-# GS-CHR-001 — Hostile-State Resilience Charter
-
-**Adversarial legality doctrine for a polycentric network operating in a world where some states are predatory.**
-
----
+# GS-FND-001 — Founding Signal & Cultural Manifesto
 
 ## 1. Purpose
 
-Some governments are neutral or protective. Some are indifferent. Some are actively hostile and use illegal covert tactics: surveillance, infiltration, harassment, asset freezing, travel bans, arbitrary detention, judicial weaponization. This Charter establishes the Guild System's doctrine for operating under those conditions.
+The public-facing signal of the Guild System. States what it is, why it exists, what it will not do, and what kind of culture its members commit to. Derives authority from GS-FND-002 (The Compact). Written to be readable by someone encountering the Guild System for the first time.
 
-The doctrine is defensive and human-rights grounded. It is not a license for covert action. Every provision assumes the Compact's Operating Article I (public or authorized data only) and the disclosure boundary (`GS-OPS-005` §6).
+## 2. Why the Guild System Exists
 
----
+Advanced technical work has become entangled with institutional narrative control. Deployments are rushed for valuation while structural warnings are suppressed. Rigorous work gathers dust in journals while corporate PR outruns evidence. Brilliant builders and theorists are isolated from each other, each locked inside a system that does not use their real capability.
 
-## 2. Preamble — The Sovereignty of Verifiable Truth
+The Guild System exists to give that work a lawful, parallel arena. It connects formalists and builders across institutions, borders, and disciplines. It recognizes contribution by verified evidence, not by institutional title. It protects members who do lawful public-interest work. It provides where provision is absent.
 
-We affirm that advanced technical alignment is a civilizational necessity. We recognize that some institutions and state apparatuses will seek to monopolize, suppress, or distort this knowledge. We declare independence from arbitrary, unlawful, or predatory state interference. Where the rule of law fails, our commitment to verifiable mathematics and human safety remains unyielding.
+It is not a conspiracy. It is not an insurgency. It is a public-interest institution built to pass scrutiny.
 
-We do not use covert data theft, espionage, criminal hacking, violence, or doxxing. Verified public truth is our ultimate legal and moral defense.
+## 3. What We Commit To
 
----
+**We work with public or authorized data only.** No covert acquisition. No proprietary telemetry. No trade secrets. Verifiability is our armor.
 
-## 3. Radical Legal Integrity
+**We publish evidence, not narratives.** Every artifact is signed, reproducible, and available to peer review. Authority rests on whether an independent third party can run our code and verify our math.
 
-**3.1 The Armor of Transparency.** The Guild System prohibits covert data acquisition, unauthorized access, and criminal hacking. Public or explicitly authorized data only.
+**We measure by contribution, not credential.** A 22-year-old open-source contributor and a 50-year-old field medalist stand on the same footing if their work is verified.
 
-**3.2 Lawful Compliance vs. Unlawful Capitulation.** Valid, human-rights-compliant legal processes are complied with. Secret courts, extrajudicial coercion, torture, or harassment to suppress lawful public-interest work are declared illegitimate, documented, archived, and exposed through lawful channels.
+**We refuse to let PR narratives outrun evidence, and we refuse to let credential outrun contribution.**
 
-**3.3 Human Rights Floor.** Anchored in the UDHR, ICCPR, UNESCO open-science principles, responsible disclosure norms, and academic freedom standards. These do not override local law. They guide the moral and narrative frame across borders.
+**We do not seek exemption.** We comply with lawful obligations. Where provision is absent, we provide.
 
----
+**We hold flow, not hoard.** Credits circulate. Reserves serve provision. We accumulate nothing a predator would want.
 
-## 4. Polycentric Continuity
+**We distribute, we do not concentrate.** No single funder, state, or institution can disable us by attacking a visible target.
 
-**4.1 No Central Point of Failure.** The Guild System is a polycentric network of Circles. If one Circle is compromised, seized, or enjoined, it is pruned via revocation protocols. Other Circles route around the disruption.
+**We operate in the open.** If a lawful authority asks who benefits from our structures, the answer is available.
 
-**4.2 Compartmentalized Knowledge.** No member is required or allowed to store information about the physical location or legal identity of other members. Knowledge is distributed on a need-to-know basis.
+## 4. Ambition and Its Right Orientation
 
-**4.3 Epistemic Firebreak.** A compromised individual cannot be forced to compromise the network at large because they do not possess the network's full map.
+The Guild System does not ask its members to be modest. Ambition is the engine of every contribution the system depends on.
 
----
+**The only healthy form of competitive drive is the one that converts into value that can be independently verified.** Superiority oriented toward dominance produces hierarchy maintenance; superiority oriented toward creation produces math, food, and institutions. The Guild System rewards the second and refuses the first. Its standing rests on what its members build, not on being above anyone.
 
-## 5. Collective Human Defense
+The verification method differs by domain — a proof by a checker, a training loop by execution, a red-team report by reproduction, a sauce by eating it. The standard does not differ.
 
-**5.1 Sovereign Relocation Protocol.** A dedicated fraction of lawful funding streams is held in compliant escrow for emergency asylum, physical relocation, and legal defense.
+## 5. What We Will Not Do
 
-**5.2 Emergency Legal Fund.** Mutual aid for members facing retaliation, prosecution, or civil suits for lawful public-interest work. Transparent, charter-governed, counsel-approved. Administered by GS-CHR-006 §5.4.
+We will not use covert data acquisition. We will not espionage. We will not hack. We will not dox. We will not harass. We will not run a tax-evasion scheme. We will not hide beneficial ownership. We will not evade sanctions. We will not facilitate unlicensed money transmission. We will not convert Merit to Credits or Credits to fiat. We will not be a covert insurgency, a criminal enterprise, or a secret society.
 
-**5.3 Mutual Defense Agreements.** Circles support each other through amicus briefs, regulatory comments, public statements, and legal coordination.
+These refusals are not negotiable. They are what make the Guild System's legitimacy survive scrutiny.
 
----
+## 6. Where We Are Going
 
-## 6. Epistemic Humility and Anti-Capture
+The Guild System is polycentric by design. No headquarters, no central board, no single leader. A network of autonomous guilds, each with its own culture and currency, interoperating through a shared protocol for merit, contribution, and idea protection.
 
-**6.1 Open Peer Review.** All findings are submitted to open, global peer review. Authority rests solely on whether an independent third party can run our code and verify our math.
+Its runtime lives at `jackyreaps/Resileos-QAI`. Its framework foundation lives at `jackyreaps/QD-TER-Human-Medium`. Its policy lives at `jackyreaps/guild-system`.
 
-**6.2 Right of Reply.** Subjects of Guild critiques are offered a chance to respond. Corrections are published.
+We invite you to join by submitting reproducible work, not by signing loyalty oaths.
 
-**6.3 Transparency Reports.** Legal demands, takedowns, and state pressure are published, subject to legal advice and member safety.
-
-**6.4 Conflict-of-Interest Rules.** Funding, employment, and affiliations are disclosed where possible. No single funder can capture the Guild System.
-
----
-
-## 7. Definitions
-
-- **Hostile State.** A state actor using unlawful, predatory, or extrajudicial means to suppress lawful public-interest work.
-- **Predatory Request.** A legal or extralegal demand lacking due process, proportionality, or human-rights compliance, or targeting lawful public-interest work.
-- **Legitimate Legal Demand.** A request following established law, due process, and human-rights standards, comply-able without violating ethical commitments.
-
----
-
-## 8. Cross-References
+## 7. Cross-References
 
 | Document | Relationship |
 |---|---|
-| GS-FND-002 Compact | Authority source; Article I, §7 (Authority) |
-| GS-CHR-005 Branch Guardrails | Detects drift from this Charter's principles |
-| GS-CHR-006 Juridical Chamber | Classifies demands per the Demand Determination Scale |
-| GS-OPS-001 First 24 Hours | Operationalizes emergency response |
-| GS-OPS-005 Structural Insulation | Structural layer of protection |
-| GS-OPS-006 Financial Resilience | Reserve layer of protection |
-| GS-MTX-001 Adversarial Legality Matrix | Threat vector mapping |
+| GS-FND-002 Compact | The binding document this signal derives from |
+| GS-CHR-002 Merit Protocol | Implements the contribution standard stated in §3 |
+| GS-CHR-004 Civic Substitution | Implements the provision commitment stated in §3 |
+| GS-CHR-005 Branch Guardrails | Enforces the anti-drift commitments stated in §5 |
