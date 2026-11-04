@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guild-system.org/schemas/local-charter.checklist.json",
+  "title": "Local Guild Charter Checklist v1",
+  "description": "Required sections for a Local Guild Charter, per GS-CHR-010 §2. Used by Resileos to validate a filed charter before hosting.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["section", "title", "required"],
+    "properties": {
+      "section": { "type": "string" },
+      "title": { "type": "string" },
+      "required": { "type": "boolean" },
+      "notes": { "type": "string" }
+    }
+  },
+  "minItems": 16,
+  "maxItems": 16,
+  "default": [
+    { "section": "2.1", "title": "Guild Identity", "required": true },
+    { "section": "2.2", "title": "Jurisdictions", "required": true },
+    { "section": "2.3", "title": "Legal Form", "required": true },
+    { "section": "2.4", "title": "Membership and Alias Rules", "required": true },
+    { "section": "2.5", "title": "Internal Governance", "required": true },
+    { "section": "2.6", "title": "Currency and Exchange", "required": true },
+    { "section": "2.7", "title": "Merit Recognition", "required": true },
+    { "section": "2.8", "title": "Contribution Verification", "required": true },
+    { "section": "2.9", "title": "Founding Orientation", "required": true, "notes": "Statement, field coupled to, invariants." },
+    { "section": "2.10", "title": "Shear Detection Method", "required": true, "notes": "Method, indicators, threshold, cadence." },
+    { "section": "2.11", "title": "Fork Conditions", "required": true },
+    { "section": "2.12", "title": "Guardrail Declaration", "required": true },
+    { "section": "2.13", "title": "Conflict-of-Interest Rules", "required": true },
+    { "section": "2.14", "title": "Legal Compliance Statement", "required": true },
+    { "section": "2.15", "title": "Counsel Contact", "required": true },
+    { "section": "2.16", "title": "Legal Annex", "required": true }
+  ]
+}
