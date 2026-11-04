@@ -1,0 +1,24 @@
+{
+  "attestation_version": 1,
+  "attestation_id": "att_3f8a9c2e1b4d5f6a7c8e9d0b1a2c3e4f5d6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c",
+  "issuer_guild": "demo",
+  "issuer_moniker": "demo-alice",
+  "issuer_public_key": "MCowBQYDK2VwAyEA7Q2b9k3xY5m1n8p4r6t2v0z9c7b5a3d1f2e4g6h8j0k",
+  "artifact_ref": "world:audits/demo-training-loop:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+  "artifact_hash": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+  "verification_evidence": {
+    "method": "independent_execution",
+    "log_ref": "world:logs/demo-training-loop-run:e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+    "log_hash": "e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0"
+  },
+  "six_dimension_score": {
+    "verification_strength": 5,
+    "novelty": 2,
+    "difficulty": 3,
+    "downstream_use": 1,
+    "robustness": 4,
+    "teaching_value": 2
+  },
+  "issued_at": "2026-11-04T12:00:00Z",
+  "signature": "MEUCIQDx3b9k3xY5m1n8p4r6t2v0z9c7b5a3d1f2e4g6h8j0k1l2m3n4o5p6q7r8s9t0u"
+}
