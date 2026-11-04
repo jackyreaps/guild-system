@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://guild-system.org/schemas/attestation.v1.json",
-  "title": "Guild Merit Attestation v1",
-  "description": "Cross-guild merit attestation format, per GS-CHR-009 §3.",
+  "$id": "https://github.com/jackyreaps/guild-system/schemas/attestation.v1.json",
+  "title": "Guild System Merit Attestation v1",
+  "description": "Cross-guild merit attestation format defined by GS-CHR-009 §3.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -20,11 +20,13 @@
   ],
   "properties": {
     "attestation_version": {
+      "type": "integer",
       "const": 1
     },
     "attestation_id": {
       "type": "string",
-      "pattern": "^att_[a-f0-9]{64}$"
+      "pattern": "^att_[a-f0-9]{64}$",
+      "description": "att_ followed by the SHA-256 of the canonical serialization of all fields except this one and signature."
     },
     "issuer_guild": {
       "type": "string",
@@ -36,11 +38,11 @@
     },
     "issuer_public_key": {
       "type": "string",
-      "contentEncoding": "base64"
+      "description": "Base64-encoded public key of the issuer moniker."
     },
     "artifact_ref": {
       "type": "string",
-      "pattern": "^world:[A-Za-z0-9._~/-]+:[a-f0-9]{64}$"
+      "description": "Content-addressed reference. The world: prefix is illustrative. Any stable content-addressed store URI is acceptable, provided artifact_hash matches the resolved content."
     },
     "artifact_hash": {
       "type": "string",
@@ -56,19 +58,19 @@
           "enum": [
             "proof_checker",
             "proof_assistant_compilation",
-            "independent_execution",
-            "independent_reproduction",
+            "execution_reproducible",
+            "independent_replication",
+            "vulnerability_reproduction",
             "independent_rerun",
             "independent_validation",
             "independent_use",
             "verified_learner_outcome",
             "longitudinal_peer_attestation",
-            "peer_attestation"
+            "two_member_peer_attestation"
           ]
         },
         "log_ref": {
-          "type": "string",
-          "pattern": "^world:[A-Za-z0-9._~/-]+:[a-f0-9]{64}$"
+          "type": "string"
         },
         "log_hash": {
           "type": "string",
@@ -102,7 +104,7 @@
     },
     "signature": {
       "type": "string",
-      "contentEncoding": "base64"
+      "description": "Base64-encoded signature over the canonical serialization of all fields except signature."
     }
   }
 }
