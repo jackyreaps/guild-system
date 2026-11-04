@@ -3,7 +3,7 @@ doc: GS-CHR-003
 title: Currency and Exchange Annex
 status: draft
 category: charter
-depends_on: [GS-FND-002, GS-OPS-008, GS-OPS-009]
+depends_on: [GS-FND-002, GS-OPS-004, GS-OPS-008, GS-OPS-009]
 runtime_impl: RS-INF-002
 review_cycle: annual
 ---
@@ -50,7 +50,9 @@ The less convertible a unit, the lower its tax and regulatory exposure, and the 
 
 | Use Case | Convertibility | Regime Triggered | Lawful Mitigation | Prohibited Version |
 |---|---|---|---|---|
-| Internal compute purchase | Closed-loop | None | Non-transferable unit | — |
+| Internal compute purchase (burn) | Closed-loop | None | Non-transferable unit | — |
+| Internal compute access (pool draw) | Closed-loop | Low | Contribution obligation documented | Off-book wage substitution |
+| Internal compute access (advance) | Closed-loop | Low | Specified future contribution | General cash advance |
 | Learning bounty in credits | Closed-loop | Low | Non-redeemable | Cash payout disguised as credits |
 | Mutual credit for review | Mutual | Low–moderate | Time-bank precedent | Off-book wage substitution |
 | Stipend for living costs | Semi-closed | Income tax likely | Disclose, withhold if required | Concealed compensation |
@@ -68,6 +70,7 @@ The less convertible a unit, the lower its tax and regulatory exposure, and the 
 - Mutual credit facilities, per GS-OPS-009 §2
 - Advances against future contribution, per GS-OPS-009 §3
 - Regulated pass-through fiat facilities at market rate, per GS-OPS-009 §4
+- Compute allocation through burn, pool draw, or advance, per GS-OPS-009 §5
 
 **Prohibited:**
 - Unlicensed money transmission
@@ -76,10 +79,12 @@ The less convertible a unit, the lower its tax and regulatory exposure, and the 
 - Wage substitution designed to avoid employment law
 - Anonymous large-value settlement
 - Convertible units without a compliance annex
-- Zero-interest or below-market fiat lending from the guild to a member (GS-OPS-009 §5)
-- Fiat lending from the mutual credit pool (GS-OPS-009 §5)
+- Zero-interest or below-market fiat lending from the guild to a member (GS-OPS-009 §6)
+- Fiat lending from the mutual credit pool (GS-OPS-009 §6)
+- Compute allocation at a premium (GS-OPS-009 §5.6)
+- Reselling allocated compute (GS-OPS-009 §5.6)
 
-**Runtime:** `RS-INF-002` §7.2 prohibits `/convert`, `/redeem`, `/transfer`, `/purchase`, `/withdraw` endpoints. Their absence is structural. Mutual credit and advance events are recorded in the ledger as `advance_issued` and `advance_settled`; they are not conversion events.
+**Runtime:** `RS-INF-002` §7.2 prohibits `/convert`, `/redeem`, `/transfer`, `/purchase`, `/withdraw` endpoints. Their absence is structural. Mutual credit, advance, and compute allocation events are recorded in the ledger as `advance_issued`, `advance_settled`, `compute_pool_draw`, `compute_pool_repay`, `compute_advance_issued`, and `compute_advance_settled`; they are not conversion events.
 
 ## 7. Private Arrangements Between Members
 
@@ -87,7 +92,7 @@ This Annex governs the guild's structures and the credits instrument. It does no
 
 If members arrange credit, exchange, or support privately, the guild does not review, endorse, or condemn those arrangements. Members are responsible for their own conduct and their own legal compliance in their own jurisdictions. The guild's protection extends to guild work under guild structures, not to private arrangements outside them.
 
-The full statement of this position is in GS-OPS-009 §6.
+The full statement of this position is in GS-OPS-009 §7.
 
 ## 8. Per-Guild Compliance Annex Requirement
 
@@ -100,9 +105,10 @@ Every guild operating any non-closed-loop instrument files a Compliance Annex re
 | GS-FND-002 Art. II, Art. III | Non-convertibility, tax integrity |
 | GS-CHR-004 Civic Substitution | Tax annex and civic provision |
 | GS-CHR-002 Merit Protocol | Merit system, separate from Credits |
+| GS-OPS-004 | Compute allocation — burn, pool draw, advance |
 | GS-OPS-005 Structural Insulation | Entity structure hosting Credits |
 | GS-OPS-006 Financial Resilience | Reserve distribution |
 | GS-OPS-008 | Treasury allocation, exchange between reserve assets |
-| GS-OPS-009 | Emergency liquidity and mutual credit mechanisms |
+| GS-OPS-009 | Emergency liquidity, mutual credit, and compute allocation |
 | GS-MTX-005 Credit Exposure Matrix | Full exposure matrix |
 | RS-INF-002 Ledger Schema | Storage and API boundary |
