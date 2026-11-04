@@ -3,19 +3,19 @@ doc: GS-OPS-009
 title: Emergency Liquidity and Mutual Credit Protocol
 status: draft
 category: operations
-depends_on: [GS-FND-002, GS-CHR-003, GS-OPS-008]
+depends_on: [GS-FND-002, GS-CHR-003, GS-OPS-004, GS-OPS-008]
 review_cycle: annual
 ---
 
 # GS-OPS-009 — Emergency Liquidity and Mutual Credit Protocol
 
-Specifies how members and guilds obtain liquidity in emergencies and opportunities without converting Guild Credits to external value (Compact Article II), without triggering below-market-loan imputation rules, and without creating a taxable event where the law provides a non-taxable alternative.
+Specifies how members and guilds obtain liquidity — credits, compute, or fiat — in emergencies and opportunities without converting Guild Credits to external value (Compact Article II), without triggering below-market-loan imputation rules, and without creating a taxable event where the law provides a non-taxable alternative.
 
-The protocol has three mechanisms. They are not interchangeable. Each has a different tax profile, a different legal character, and a different compliance surface. Choosing the wrong mechanism for a given need is how mutual aid gets characterized as either tax evasion or unlicensed lending.
+The protocol has four mechanisms. They are not interchangeable. Each has a different tax profile, a different legal character, and a different compliance surface. Choosing the wrong mechanism for a given need is how mutual aid gets characterized as either tax evasion or unlicensed lending.
 
 ## 1. Purpose
 
-A member facing a legal emergency needs cash for counsel in a jurisdiction that does not accept Guild Credits. A guild facing an opportunity needs fiat to secure compute before a window closes. A member between contributions needs bridge support while their next artifact is being verified.
+A member facing a legal emergency needs cash for counsel in a jurisdiction that does not accept Guild Credits. A guild facing an opportunity needs fiat to secure compute before a window closes. A member between contributions needs bridge support while their next artifact is being verified. A member needs GPU hours to complete a verification job but has not yet earned enough credits.
 
 Each of these is a legitimate need. None of them is well-served by a zero-interest fiat loan from the guild to the member, because:
 
@@ -24,13 +24,13 @@ Each of these is a legitimate need. None of them is well-served by a zero-intere
 - The Tax Court's contrary position in some demand-loan cases is not a foundation that holds across jurisdictions.
 - A structure that depends on winning a tax argument in court is a litigation strategy, not a compliance strategy.
 
-The three mechanisms below avoid the imputation problem by not being below-market loans.
+The four mechanisms below avoid the imputation problem by not being below-market money loans.
 
 ## 2. Mechanism 1 — Mutual Credit Facility
 
 ### 2.1 What it is
 
-A set of member-to-member credit lines cleared through the guild's ledger, denominated in internal credits, extinguished by future contribution rather than by interest-bearing repayment. This is the primary emergency mechanism.
+A set of member-to-member credit lines cleared through the guild's ledger, denominated in internal credits, extinguished by future contribution rather than by interest-bearing repayment. This is the primary credit-liquidity mechanism.
 
 It is not a loan from the guild to the member. It is a set of mutual obligations among members, with the guild acting as clearinghouse.
 
@@ -49,13 +49,13 @@ The IRS has issued informal guidance and private rulings treating hour-for-hour 
 
 1. A member in need requests credits from the mutual credit pool.
 2. The pool extends credits based on the member's verified contribution history and the guild's published lending policy.
-3. The member uses the credits for internal goods — compute, tools, courses, or for exchange through the guild's treasury (Mechanism 3).
+3. The member uses the credits for internal goods — compute, tools, courses, or other internal services.
 4. The member extinguishes the obligation by future verified contribution, at a schedule set in the loan terms.
 5. No interest is charged. No fiat principal was advanced. No imputation applies.
 
 ### 2.4 Limits
 
-- **Mutual credit only.** The pool holds internal credits, not fiat. A member who needs fiat goes through Mechanism 3.
+- **Mutual credit only.** The pool holds internal credits, not fiat. A member who needs fiat goes through §5.
 - **Per-member cap.** The guild sets a maximum credit extension per member, declared in its Local Guild Charter.
 - **Verification required.** Extension requires verification of contribution history. A new member with no history is not eligible for the maximum extension.
 - **Transparency.** Aggregate mutual credit activity is reported in the guild's annual transparency report. Individual balances are visible only to the member and to the guild's internal governance.
@@ -80,7 +80,7 @@ An advance against future services is closer to a prepayment than a loan. It doe
 1. A member identifies a need (emergency, opportunity, bridge support).
 2. The guild's internal governance authorizes an advance against specified future contribution — for example, "advance of X credits against completion of the next reproducibility audit."
 3. The advance is recorded in the ledger as an `advance_issued` event.
-4. When the member completes the specified contribution, the advance is recorded as settled with a `advance_settled` event. The member receives the merit for the contribution; the credits were already advanced.
+4. When the member completes the specified contribution, the advance is recorded as settled with an `advance_settled` event. The member receives the merit for the contribution; the credits were already advanced.
 5. If the contribution is not completed within the declared window, the guild's governance decides how to handle the shortfall — roll over, convert to mutual credit, or record as compensation.
 
 ### 3.4 Limits
@@ -116,18 +116,77 @@ The regulated pass-through avoids this entirely. The interest is real, it is pai
 - **Tax documentation.** The member receives documentation of the interest paid, for their own tax purposes.
 - **No concealment.** The pass-through is disclosed to lawful authorities on request under GS-OPS-005 §6.
 
-## 5. What the Guild Does Not Do
+## 5. Mechanism 4 — Compute Allocation
+
+Compute is a reserve asset the guild holds (GS-OPS-008 §3.1). It can be allocated to members on the same principles as credits, and — from a tax perspective — compute allocation is structurally cleaner than fiat lending.
+
+### 5.1 Why Compute Is Cleaner Than Fiat
+
+The imputation rules under IRC §7872 apply to loans of money. They do not apply to the allocation of a service.
+
+When the guild allocates compute to a member, the guild is not lending money. It is providing access to a resource it already holds. The member's obligation — where one exists — is in contribution, not in money. This is a service-for-service arrangement, not a loan.
+
+The rules that apply to service exchanges are barter rules, not loan rules. They are simpler, they do not impute interest, and they do not create the phantom income that §7872 creates for below-market money loans.
+
+### 5.2 Three Use Cases
+
+**Case 1 — Compute for guild work.** The compute is a work resource. Not a loan, not a benefit, not an exchange. The member is working; the guild provides the tool. No taxable event beyond the normal treatment of guild work.
+
+**Case 2 — Compute for personal work, paid in credits.** The member burns Guild Credits (earned by contribution) for compute access. Credits are non-convertible scrip. The member has used internal accounting units for an internal resource. No external value flows to the member. This is the burn model of GS-OPS-004 §2.4.
+
+**Case 3 — Compute for personal work, repaid in future contribution.** The member receives compute now and contributes later. This is closer to a barter exchange. The value of the compute and the value of the contribution should be roughly equal. If they are, there is minimal net gain, but the exchange should be documented.
+
+Case 1 and Case 2 are the cleanest. Case 3 is workable but requires documentation.
+
+### 5.3 The Compute Mutual Pool
+
+The guild may maintain a shared compute allocation that members can draw on, with repayment in future contribution. This is the same mechanism as the mutual credit facility (§2), applied to compute.
+
+1. A member requests compute from the pool.
+2. The pool extends compute based on the member's contribution history.
+3. The member uses the compute for guild or personal work.
+4. The member repays by future verified contribution.
+5. No interest. No fiat. No imputation.
+
+The pool draw is recorded in the ledger as a `compute_pool_draw` event (RS-INF-002 §4 extension). Repayment is recorded as a `compute_pool_repay` event when the contribution is verified.
+
+### 5.4 Compute Advance
+
+The guild may advance compute to a member against a specified future contribution. This is the same mechanism as §3, applied to compute.
+
+1. The member specifies a need.
+2. The guild's internal governance authorizes the advance against a named future contribution.
+3. The advance is recorded as a `compute_advance_issued` event.
+4. When the contribution is complete, the advance is settled with a `compute_advance_settled` event.
+5. If not completed, the guild's governance decides how to handle it — roll over, convert to pool draw, or record as a barter exchange.
+
+### 5.5 Compute Purchased from an External Provider
+
+If the member needs compute the guild does not hold, and the guild purchases it from an external provider on the member's behalf, that is a fiat transaction. It goes through the regulated pass-through in §4.
+
+The distinction: **guild-held compute is allocated (no fiat, no imputation). Externally purchased compute is a pass-through (fiat, market rate, no imputation because the pass-through is at market rate).**
+
+### 5.6 What Is Not Permitted
+
+- **Compute allocation at a premium.** No rent, no fee, no interest. Repayment is in contribution.
+- **Compute allocation that becomes a fiat obligation.** The member's obligation is in contribution, never in money. If fiat is needed, §4.
+- **Conversion of compute allocation to credits.** Compute allocation is a use of a resource, not a credit transaction. There is no path from compute to credits.
+- **Concentration.** No single member above a declared share of the guild's compute allocation.
+- **Reselling allocated compute.** A member who draws compute from the pool may not resell it to another party. The allocation is for the member's own use.
+
+## 6. What the Guild Does Not Do
 
 None of the following are permitted, regardless of how they are characterized:
 
-- **Zero-interest fiat lending from the guild to a member.** This is the structure that triggers imputation, and it is what the three mechanisms above are designed to avoid.
+- **Zero-interest fiat lending from the guild to a member.** This is the structure that triggers imputation, and it is what the four mechanisms above are designed to avoid.
 - **Fiat loans from the mutual credit pool.** The pool holds internal credits, not fiat.
 - **Advances without a specified future contribution.** A general cash advance is a loan in substance.
 - **Pass-through facilities at above-market rates.** The pass-through is a pass-through, not a profit center.
 - **Conversion of Guild Credits to fiat.** Article II stands. The regulated bridge is a loan, not a conversion.
+- **Compute allocation at a premium.** No rent, no fee, no interest on allocated compute.
 - **Any structure that fails GS-OPS-005 §6 (disclosure boundary).**
 
-## 6. Private Arrangements Between Members
+## 7. Private Arrangements Between Members
 
 The Guild System governs what happens on its ledger and through its structures. It does not govern the private lives of its members.
 
@@ -137,9 +196,9 @@ This is not indifference. It is the limit of the guild's jurisdiction. A guild t
 
 The guild's protection extends to guild work performed under guild structures. The Defense Fund, the Juridical Chamber, and the Counsel Network cover members facing retaliation for guild work — not private arrangements outside those structures. A member who acts alone acts alone.
 
-The guild's public position on mutual aid is stated in §7. It makes that position as advocacy, not as cover.
+The guild's public position on mutual aid is stated in §8. It makes that position as advocacy, not as cover.
 
-## 7. The Moral Position, Stated Publicly
+## 8. The Moral Position, Stated Publicly
 
 The Guild System holds that mutual aid between people helping each other is not the kind of transaction the tax code was designed to reach. Most jurisdictions already recognize this in fragments — gift exclusions, de minimis thresholds, favorable treatment for time banks and mutual credit, tax-exempt status for mutual aid organizations.
 
@@ -147,7 +206,7 @@ The protocol above is designed to build inside those recognized categories, not 
 
 A guild that argues with the tax code cannot protect its members. A guild that builds inside the recognized exclusions can. The moral claim — that mutual aid should not be taxed — is one the Guild System makes publicly. It does not make it by structuring a loan the code treats as taxable and calling it something else.
 
-## 8. Cross-References
+## 9. Cross-References
 
 | Document | Relationship |
 |---|---|
@@ -155,8 +214,8 @@ A guild that argues with the tax code cannot protect its members. A guild that b
 | GS-FND-002 Art. III | Tax-Integrity Floor |
 | GS-CHR-003 §6 | Permitted and prohibited structures |
 | GS-CHR-005 §2.2, §2.6 | Accumulation and Entanglement Drift |
-| GS-OPS-004 | Compute and treasury compliance |
+| GS-OPS-004 §2.4 | Compute metering — burn model for credit-paid compute; this document §5 covers the allocation model |
 | GS-OPS-005 §6 | Disclosure boundary |
 | GS-OPS-008 §5.2 | Borrowing — distinguishes guild as borrower from guild as lender |
 | GS-MTX-005 | Credit exposure — confirms credits remain internal |
-| RS-INF-002 | Ledger records `advance_issued` and `advance_settled` events |
+| RS-INF-002 §4 | Ledger events: `advance_issued`, `advance_settled`, `compute_pool_draw`, `compute_pool_repay`, `compute_advance_issued`, `compute_advance_settled` |
