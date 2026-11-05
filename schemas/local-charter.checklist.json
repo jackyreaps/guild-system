@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/jackyreaps/guild-system/schemas/local-charter.checklist.json",
   "title": "Local Guild Charter — required and optional sections checklist",
-  "description": "Checklist derived from GS-CHR-010 §2 and §3. Required sections must be present. Optional sections (rank_table, title_catalog, valor_policy) may be absent; a guild that has not defined them states so in the charter rather than omitting the record. Absence is valid and does not fail validation.",
+  "description": "Checklist derived from GS-CHR-010 §2 and §3. Required sections must be present. Optional sections (rank_table, title_catalog, valor_policy) may be absent; a guild that has not defined them states so in the charter rather than omitting the record. Absence is valid and does not fail validation. structural_model is required only if the guild sits in a network that has adopted a model under GS-CHR-012.",
   "type": "object",
   "required": [
     "guild_identity",
@@ -25,40 +25,124 @@
   "properties": {
     "guild_identity": {
       "type": "object",
-      "required": ["name", "guild_id", "founding_date"]
+      "description": "GS-CHR-010 §2.1",
+      "required": ["name", "guild_id", "founding_date"],
+      "properties": {
+        "name": { "type": "string" },
+        "guild_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "founding_date": { "type": "string", "format": "date" },
+        "founding_members": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Monikers only. Legal identity is optional."
+        }
+      }
     },
     "jurisdictions": {
       "type": "object",
-      "required": ["operation", "asset_holding"]
+      "description": "GS-CHR-010 §2.2",
+      "required": ["operation", "asset_holding"],
+      "properties": {
+        "operation": { "type": "array", "items": { "type": "string" } },
+        "asset_holding": { "type": "array", "items": { "type": "string" } },
+        "member_residence_aggregated": { "type": "array", "items": { "type": "string" } }
+      }
     },
     "legal_form": {
       "type": "object",
-      "required": ["entity_type", "registration_jurisdiction"]
+      "description": "GS-CHR-010 §2.3",
+      "required": ["entity_type", "registration_jurisdiction"],
+      "properties": {
+        "entity_type": { "type": "string" },
+        "registration_jurisdiction": { "type": "string" },
+        "registered_agent": { "type": "string" }
+      }
     },
     "membership_rules": {
       "type": "object",
-      "required": ["join_process"]
+      "description": "GS-CHR-010 §2.4",
+      "required": ["join_process"],
+      "properties": {
+        "join_process": { "type": "string" },
+        "membership_type": {
+          "type": "string",
+          "enum": ["open", "invitation", "application", "other"]
+        },
+        "alias_policy": { "type": "string" }
+      }
     },
     "internal_governance": {
       "type": "object",
-      "required": ["decision_process", "amendment_process"]
+      "description": "GS-CHR-010 §2.5",
+      "required": ["decision_process", "amendment_process"],
+      "properties": {
+        "decision_process": { "type": "string" },
+        "amendment_process": { "type": "string" },
+        "term_limits": { "type": "string" }
+      }
     },
     "currency_system": {
       "type": "object",
-      "required": ["system", "compliance_annex_ref"]
+      "description": "GS-CHR-010 §2.6",
+      "required": ["system", "compliance_annex_ref"],
+      "properties": {
+        "system": {
+          "type": "string",
+          "description": "Default is closed-loop Credits per GS-CHR-003. Any non-closed-loop instrument requires a compliance annex reference."
+        },
+        "compliance_annex_ref": { "type": "string" },
+        "hub_consolidation": {
+          "type": "object",
+          "description": "GS-OPS-010 §4.1. Present only if the guild operates hub credits.",
+          "properties": {
+            "hubs": { "type": "array", "items": { "type": "string" } },
+            "rate_published": { "type": "boolean" }
+          }
+        }
+      }
     },
     "merit_calibration": {
       "type": "object",
-      "required": ["calibration_rules"]
+      "description": "GS-CHR-010 §2.7",
+      "required": ["calibration_rules"],
+      "properties": {
+        "calibration_rules": { "type": "string" },
+        "public_good_additions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Additions beyond the Compact floor in GS-FND-002 §4 Article IV."
+        }
+      }
     },
     "contribution_verification": {
       "type": "object",
-      "required": ["methods"]
+      "description": "GS-CHR-010 §2.8",
+      "required": ["methods"],
+      "properties": {
+        "methods": { "type": "array", "items": { "type": "string" } },
+        "custom_contribution_types": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "primitive"],
+            "properties": {
+              "type": { "type": "string" },
+              "primitive": { "type": "string" }
+            }
+          }
+        }
+      }
     },
     "founding_orientation": {
       "type": "object",
+      "description": "GS-CHR-010 §2.9. Stored at meta.frame_profile in the ledger (RS-INF-002).",
       "required": ["statement", "field_coupled_to", "invariants"],
       "properties": {
+        "statement": { "type": "string" },
+        "field_coupled_to": { "type": "string" },
         "invariants": {
           "type": "array",
           "minItems": 3,
@@ -69,6 +153,7 @@
     },
     "shear_detection": {
       "type": "object",
+      "description": "GS-CHR-010 §2.10. Stored at meta.frame_profile in the ledger (RS-INF-002).",
       "required": ["method", "indicators", "threshold", "review_cadence"],
       "properties": {
         "method": {
@@ -80,6 +165,7 @@
           "minItems": 3,
           "items": { "type": "string" }
         },
+        "threshold": { "type": "string" },
         "review_cadence": {
           "type": "string",
           "enum": ["monthly", "quarterly", "annual"]
@@ -88,32 +174,73 @@
     },
     "fork_conditions": {
       "type": "array",
+      "description": "GS-CHR-010 §2.11. Under GS-CHR-012 Sovereignty, fork is not preserved; the charter must state the exit path instead.",
       "minItems": 1,
       "items": { "type": "string" }
     },
     "guardrail_declaration": {
       "type": "object",
-      "required": ["compliance_statement"]
+      "description": "GS-CHR-010 §2.12",
+      "required": ["compliance_statement"],
+      "properties": {
+        "compliance_statement": { "type": "string" },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["drift", "justification"],
+            "properties": {
+              "drift": {
+                "type": "string",
+                "enum": [
+                  "exemption",
+                  "accumulation",
+                  "patron",
+                  "opacity",
+                  "concentration",
+                  "entanglement",
+                  "irreversibility"
+                ]
+              },
+              "justification": { "type": "string" }
+            }
+          }
+        }
+      }
     },
     "conflict_of_interest": {
       "type": "object",
-      "required": ["disclosure_rules", "recusal_rules"]
+      "description": "GS-CHR-010 §2.13",
+      "required": ["disclosure_rules", "recusal_rules"],
+      "properties": {
+        "disclosure_rules": { "type": "string" },
+        "recusal_rules": { "type": "string" }
+      }
     },
     "legal_compliance": {
       "type": "object",
-      "required": ["tax_integrity_statement", "disclosure_boundary_statement"]
+      "description": "GS-CHR-010 §2.14",
+      "required": ["tax_integrity_statement", "disclosure_boundary_statement"],
+      "properties": {
+        "tax_integrity_statement": { "type": "string" },
+        "disclosure_boundary_statement": { "type": "string" }
+      }
     },
     "counsel_contact": {
       "type": "object",
-      "required": ["contact"]
+      "description": "GS-CHR-010 §2.15",
+      "required": ["contact"],
+      "properties": {
+        "contact": { "type": "string" }
+      }
     },
     "legal_annex_ref": {
       "type": "string",
-      "description": "Content-addressed reference to the filed legal annex."
+      "description": "GS-CHR-010 §2.16. Content-addressed reference to the filed legal annex."
     },
     "structural_model": {
       "type": "object",
-      "description": "Required only if the guild sits in a network that has adopted a structural model under GS-CHR-012.",
+      "description": "GS-CHR-010 §2.17. Required only if the guild sits in a network that has adopted a model under GS-CHR-012.",
       "properties": {
         "model": {
           "type": "string",
