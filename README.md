@@ -45,7 +45,9 @@ Four **Structural Principles** (spatial and political architecture):
 
 ## How the system is governed
 
-There is no central authority. Authority is granted by specific documents to specific bodies for specific purposes, bounded in time and scope, subject to sunset and revocation (Compact §7). Peer attestation replaces central enforcement (Compact §9). Fork is always available (Compact §10).
+The Compact grants no permanent central authority. Authority is granted by specific documents to specific bodies for specific purposes, bounded in time and scope, subject to sunset and revocation (Compact §7). Peer attestation replaces central enforcement (Compact §9). Fork is always available (Compact §10).
+
+Three structural models for network scale are specified in draft form at **[GS-CHR-012](charters/GS-CHR-012-structural-models-scale.md)** — Convocation, Imperium, and Sovereignty. A network chooses its model under GS-CHR-012 §8. The choice is a decision of the guilds subject to it, not a decision of any body over them. Until GS-CHR-012 is ratified, the Compact's §7 governs.
 
 ## Status
 
@@ -57,12 +59,15 @@ All documents are in **draft** status pending ratification by chartered guilds. 
 
 | Document | Lives at | Relationship |
 |---|---|---|
-| `RS-INF-001` Guild Infrastructure Program | `Resileos-QAI/docs/320-titanos/guild-infra-program.md` | Runtime implementation program — **planned, not yet uploaded** |
-| `RS-INF-002` Guild Ledger Schema | `Resileos-QAI/docs/320-titanos/ledger-schema.md` | Data contract — **planned, not yet uploaded** |
-| `RS-INF-003` Guild Frame Profile | `Resileos-QAI/docs/320-titanos/frame-profile.md` | Founding orientation in ledger form — **planned, not yet uploaded** |
+| `RS-INF-001` Guild Infrastructure Program | `Resileos-QAI/docs/320-titanos/guild-infra-program.md` | Runtime implementation program — **on Resileos main** |
+| `RS-INF-002` Guild Ledger Schema | `Resileos-QAI/docs/320-titanos/ledger-schema.md` | Data contract, including `meta.frame_profile` — **on Resileos main** |
+| `RS-INF-003` Ranks and Work Board | `Resileos-QAI/docs/320-titanos/guild-classes-board.md` | Local rank thresholds and work items — **on Resileos main** |
+| `RS-INF-004` Titles and Valor Portfolio | `Resileos-QAI/docs/320-titanos/guild-titles-valor.md` | Earned titles and recorded valor events — **on Resileos main** |
 | QD-TER Human Medium pointer | `QD-TER-Human-Medium/Guild/README.md` | Framework reference — exists |
 
-The `RS-INF-*` documents are the implementation program of record. They are not copied here. They bind Resileos to this Compact; they do not amend it. Until they are uploaded to Resileos `main`, the pointers above are aspirational and are marked as such.
+The `RS-INF-*` documents are the implementation program of record. They are not copied here. They bind Resileos to this Compact; they do not amend it.
+
+**Note on the frame profile.** There is no separate frame-profile document. The founding orientation and shear detection fields are stored as `meta.frame_profile` inside the ledger, and are specified in RS-INF-002. Any older reference to "RS-INF-003 — frame profile" is superseded; RS-INF-003 is now the ranks and work board.
 
 ## License
 
