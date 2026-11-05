@@ -36,6 +36,7 @@ The authoritative document hierarchy is stated in Compact §8: FND > CHR > OPS >
 | GS-CHR-009 | Interoperability Protocol | Draft | No | `charters/GS-CHR-009-interoperability.md` |
 | GS-CHR-010 | Local Guild Charter Template | Draft | No | `charters/GS-CHR-010-local-charter-template.md` |
 | GS-CHR-011 | Identity and Alias Protocol | Draft | No | `charters/GS-CHR-011-identity-alias.md` |
+| GS-CHR-012 | Structural Models for Scale — Convocation, Imperium, and Sovereignty | Draft | No | `charters/GS-CHR-012-structural-models-scale.md` |
 
 ## Operations (OPS)
 
@@ -48,6 +49,9 @@ The authoritative document hierarchy is stated in Compact §8: FND > CHR > OPS >
 | GS-OPS-005 | Structural Insulation Protocol | Draft | No | `operations/GS-OPS-005-structural-insulation.md` |
 | GS-OPS-006 | Financial Resilience and Distribution | Draft | No | `operations/GS-OPS-006-financial-resilience.md` |
 | GS-OPS-007 | Modular Proxy Architecture (Corporate Tiering) | Draft | No | `operations/GS-OPS-007-modular-proxy.md` |
+| GS-OPS-008 | Treasury and Asset Allocation Protocol | Draft | No | `operations/GS-OPS-008-treasury-asset-allocation.md` |
+| GS-OPS-009 | Emergency Liquidity and Mutual Credit Protocol | Draft | No | `operations/GS-OPS-009-emergency-liquidity-mutual-credit.md` |
+| GS-OPS-010 | Tiered Closed-Loop Unit Hierarchy | Draft | No | `operations/GS-OPS-010-tiered-closed-loop-hierarchy.md` |
 
 ## Matrices (MTX)
 
@@ -77,7 +81,7 @@ The authoritative document hierarchy is stated in Compact §8: FND > CHR > OPS >
 | File | Validates | Source document |
 |---|---|---|
 | `schemas/attestation.v1.json` | Cross-guild merit attestation | GS-CHR-009 §3 |
-| `schemas/local-charter.checklist.json` | Local Guild Charter required sections | GS-CHR-010 §2 |
+| `schemas/local-charter.checklist.json` | Local Guild Charter required and optional sections | GS-CHR-010 §2 |
 
 ## Worked examples
 
@@ -88,22 +92,29 @@ The authoritative document hierarchy is stated in Compact §8: FND > CHR > OPS >
 
 ## External programs of record (not copied into this repo)
 
-| ID | Title | Location | Status on Resileos |
+| ID | Title | Location | Status |
 |---|---|---|---|
-| RS-INF-001 | Guild Infrastructure Program | `Resileos-QAI/docs/320-titanos/guild-infra-program.md` | **Planned — not yet uploaded** |
-| RS-INF-002 | Guild Ledger Schema | `Resileos-QAI/docs/320-titanos/ledger-schema.md` | **Planned — not yet uploaded** |
-| RS-INF-003 | Guild Frame Profile | `Resileos-QAI/docs/320-titanos/frame-profile.md` | **Planned — not yet uploaded** |
+| RS-INF-001 | Guild Infrastructure Program | `Resileos-QAI/docs/320-titanos/guild-infra-program.md` | On Resileos main |
+| RS-INF-002 | Guild Ledger Schema | `Resileos-QAI/docs/320-titanos/ledger-schema.md` | On Resileos main |
+| RS-INF-003 | Ranks and Work Board | `Resileos-QAI/docs/320-titanos/guild-classes-board.md` | On Resileos main |
+| RS-INF-004 | Titles and Valor Portfolio | `Resileos-QAI/docs/320-titanos/guild-titles-valor.md` | On Resileos main |
 
-These are the implementation program of record. They bind Resileos to this Compact. They do not amend it. Until they are committed to Resileos `main`, the pointers above are aspirational. Do not treat them as resolved.
+These are the implementation program of record. They bind Resileos to this Compact. They do not amend it.
+
+**Note on the frame profile.** There is no separate frame-profile document. The founding orientation and shear detection fields are stored as `meta.frame_profile` inside the ledger, and are specified in RS-INF-002. Any older reference to "RS-INF-003 — frame profile" is superseded; RS-INF-003 is now the ranks and work board.
 
 ## Dependency chain
 
 ```
 GS-FND-002 Compact
   → GS-CHR-002, GS-CHR-003, GS-CHR-004, GS-CHR-005, GS-CHR-006
+  → GS-CHR-012 (structural model choice; depends on GS-CHR-010)
     → GS-OPS-001, GS-OPS-002, GS-OPS-005, GS-OPS-006, GS-OPS-007
+    → GS-OPS-008, GS-OPS-009, GS-OPS-010 (treasury, liquidity, unit tiers)
       → GS-CHR-007, GS-CHR-008, GS-CHR-009, GS-CHR-010
         → Resileos Phase A, Phase B, Phase C
 ```
 
 **Resileos Phase C** is blocked on **ratified** GS-CHR-009. The file exists as a draft; it is not ratified. Phase C implementation may begin against the draft format, but attestation exports are not recognized across guilds until GS-CHR-009 is ratified.
+
+**Ranks, titles, and valor portfolios** are implemented in RS-INF-003 and RS-INF-004. They are runtime records, not authority. GS-CHR-012 §12 governs how they feed representation under whichever structural model the network has chosen.
