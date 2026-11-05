@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/jackyreaps/guild-system/schemas/local-charter.checklist.json",
-  "title": "Local Guild Charter — required sections checklist",
-  "description": "Checklist derived from GS-CHR-010 §2. A Local Guild Charter is valid only if every required section is present.",
+  "title": "Local Guild Charter — required and optional sections checklist",
+  "description": "Checklist derived from GS-CHR-010 §2 and §3. Required sections must be present. Optional sections (rank_table, title_catalog, valor_policy) may be absent; a guild that has not defined them states so in the charter rather than omitting the record. Absence is valid and does not fail validation.",
   "type": "object",
   "required": [
     "guild_identity",
@@ -23,35 +23,196 @@
     "legal_annex_ref"
   ],
   "properties": {
-    "guild_identity": { "type": "object", "required": ["name", "guild_id", "founding_date"] },
-    "jurisdictions": { "type": "object", "required": ["operation", "asset_holding"] },
-    "legal_form": { "type": "object", "required": ["entity_type", "registration_jurisdiction"] },
-    "membership_rules": { "type": "object", "required": ["join_process"] },
-    "internal_governance": { "type": "object", "required": ["decision_process", "amendment_process"] },
-    "currency_system": { "type": "object", "required": ["system", "compliance_annex_ref"] },
-    "merit_calibration": { "type": "object", "required": ["calibration_rules"] },
-    "contribution_verification": { "type": "object", "required": ["methods"] },
+    "guild_identity": {
+      "type": "object",
+      "required": ["name", "guild_id", "founding_date"]
+    },
+    "jurisdictions": {
+      "type": "object",
+      "required": ["operation", "asset_holding"]
+    },
+    "legal_form": {
+      "type": "object",
+      "required": ["entity_type", "registration_jurisdiction"]
+    },
+    "membership_rules": {
+      "type": "object",
+      "required": ["join_process"]
+    },
+    "internal_governance": {
+      "type": "object",
+      "required": ["decision_process", "amendment_process"]
+    },
+    "currency_system": {
+      "type": "object",
+      "required": ["system", "compliance_annex_ref"]
+    },
+    "merit_calibration": {
+      "type": "object",
+      "required": ["calibration_rules"]
+    },
+    "contribution_verification": {
+      "type": "object",
+      "required": ["methods"]
+    },
     "founding_orientation": {
       "type": "object",
       "required": ["statement", "field_coupled_to", "invariants"],
       "properties": {
-        "invariants": { "type": "array", "minItems": 3, "maxItems": 7, "items": { "type": "string" } }
+        "invariants": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 7,
+          "items": { "type": "string" }
+        }
       }
     },
     "shear_detection": {
       "type": "object",
       "required": ["method", "indicators", "threshold", "review_cadence"],
       "properties": {
-        "method": { "type": "string", "enum": ["peer_attestation", "metric_watch", "hybrid"] },
-        "indicators": { "type": "array", "minItems": 3, "items": { "type": "string" } },
-        "review_cadence": { "type": "string", "enum": ["monthly", "quarterly", "annual"] }
+        "method": {
+          "type": "string",
+          "enum": ["peer_attestation", "metric_watch", "hybrid"]
+        },
+        "indicators": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "type": "string" }
+        },
+        "review_cadence": {
+          "type": "string",
+          "enum": ["monthly", "quarterly", "annual"]
+        }
       }
     },
-    "fork_conditions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
-    "guardrail_declaration": { "type": "object", "required": ["compliance_statement"] },
-    "conflict_of_interest": { "type": "object", "required": ["disclosure_rules", "recusal_rules"] },
-    "legal_compliance": { "type": "object", "required": ["tax_integrity_statement", "disclosure_boundary_statement"] },
-    "counsel_contact": { "type": "object", "required": ["contact"] },
-    "legal_annex_ref": { "type": "string", "description": "Content-addressed reference to the filed legal annex." }
+    "fork_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "guardrail_declaration": {
+      "type": "object",
+      "required": ["compliance_statement"]
+    },
+    "conflict_of_interest": {
+      "type": "object",
+      "required": ["disclosure_rules", "recusal_rules"]
+    },
+    "legal_compliance": {
+      "type": "object",
+      "required": ["tax_integrity_statement", "disclosure_boundary_statement"]
+    },
+    "counsel_contact": {
+      "type": "object",
+      "required": ["contact"]
+    },
+    "legal_annex_ref": {
+      "type": "string",
+      "description": "Content-addressed reference to the filed legal annex."
+    },
+    "structural_model": {
+      "type": "object",
+      "description": "Required only if the guild sits in a network that has adopted a structural model under GS-CHR-012.",
+      "properties": {
+        "model": {
+          "type": "string",
+          "enum": ["convocation", "imperium", "sovereignty", "none", "external"]
+        },
+        "convocation_status": {
+          "type": "string",
+          "enum": ["sits", "opted_out", "not_eligible"]
+        },
+        "imperium_status": {
+          "type": "string",
+          "enum": ["senate", "periphery", "not_member"]
+        },
+        "sovereignty_relationship": {
+          "type": "string",
+          "description": "Free text describing the guild's relationship to the sovereign's charge and the Council of Valor."
+        }
+      }
+    },
+    "rank_table": {
+      "type": "object",
+      "description": "OPTIONAL — GS-CHR-010 §3.1. A guild that defines a local rank ladder publishes it here. If absent or null, the charter must state that no ladder is defined at filing. Local ranks are not network offices (GS-CHR-012 §12.2).",
+      "properties": {
+        "defined": { "type": "boolean" },
+        "deferred": { "type": "boolean" },
+        "recorded_in": {
+          "type": "string",
+          "const": "RS-INF-003"
+        },
+        "ranks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "merit_threshold"],
+            "properties": {
+              "name": { "type": "string" },
+              "merit_threshold": { "type": "integer", "minimum": 0 },
+              "additional_conditions": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "title_catalog": {
+      "type": "object",
+      "description": "OPTIONAL — GS-CHR-010 §3.2. A guild that awards titles publishes the catalog here. If absent or null, the charter must state that no title catalog is defined at filing. Titles are earned, never purchased (GS-CHR-012 §12.2).",
+      "properties": {
+        "defined": { "type": "boolean" },
+        "deferred": { "type": "boolean" },
+        "recorded_in": {
+          "type": "string",
+          "const": "RS-INF-004"
+        },
+        "titles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["title", "criteria"],
+            "properties": {
+              "title": { "type": "string" },
+              "criteria": { "type": "string" },
+              "evidence": { "type": "string" },
+              "revocable": { "type": "boolean" },
+              "revocation_conditions": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "valor_policy": {
+      "type": "object",
+      "description": "OPTIONAL — GS-CHR-010 §3.3. A guild that records valor publishes its policy here. If absent or null, the charter must state that no valor policy is defined at filing. Accomplished valor is evidence for representation; it does not auto-appoint (GS-CHR-012 §12.3).",
+      "properties": {
+        "defined": { "type": "boolean" },
+        "deferred": { "type": "boolean" },
+        "recorded_in": {
+          "type": "string",
+          "const": "RS-INF-004"
+        },
+        "definition": {
+          "type": "string",
+          "description": "What counts as valor. Must involve demonstrated cost borne, not assertion."
+        },
+        "pending_criteria": {
+          "type": "string",
+          "description": "What evidence is required to record a valor claim as pending."
+        },
+        "accomplished_criteria": {
+          "type": "string",
+          "description": "What evidence is required to move a pending record to accomplished."
+        },
+        "verifier": {
+          "type": "string",
+          "description": "The guild body or process that confirms accomplishment."
+        }
+      }
+    }
   }
 }
