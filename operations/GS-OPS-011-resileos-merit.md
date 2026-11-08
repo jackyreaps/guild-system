@@ -1,27 +1,29 @@
-# GS-OPS-011 — Resileos board completion as merit candidate
-
+---
+doc: GS-OPS-011
+title: Resileos board completion as merit and credit
 status: draft
-depends_on: [GS-CHR-002, schemas/attestation.v1.json]
+category: operations
+depends_on: [GS-FND-002, GS-CHR-002, GS-MTX-005, GS-OPS-009, schemas/attestation.v1.json]
+---
 
-A completed board item from a Resileos worker is a valid artifact for attestation.
+# GS-OPS-011 — Resileos board completion
 
-## What Resileos emits
+A completed board item from a Resileos worker may emit both a merit candidate and a credit earn. They are different.
 
-`complete_and_credit(guild_id, member, title, evidence)` returns a merit candidate:
+## Merit
 
-- issuer_guild
-- issuer_moniker
-- artifact_ref
-- verification_evidence
-- score
-- status: candidate
+Permanent, non-transferable, non-purchasable attestation of verified contribution. Not spent. Signed by the guild process.
 
-## What the guild still does
+## Credit
 
-The guild process adds the public key and the signature, then records the attestation. Resileos does not sign and does not transfer merit.
+Internal accounting unit for compute, tools, materials, and education. Not convertible to fiat. Protocol `/transfer`, `/redeem`, and `/convert` are prohibited. Mutual credit is a facility, not a free transfer.
+
+## Free tier
+
+Resileos free tier remains. Credits add additional use. Work earns them. Use burns them.
 
 ## Cross-reference
 
-Resileos document: `docs/guild-merit.md` in the Resileos-QAI repository.
+Resileos: `docs/guild-merit.md`.
 Schema: `schemas/attestation.v1.json`.
-Matrices: GS-MTX-003, GS-MTX-004.
+Compact: GS-FND-002 Article II.
